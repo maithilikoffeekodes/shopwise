@@ -261,12 +261,12 @@ class Home extends BaseController
     }
     public function order()
     {
-        // if (!empty(session('uid'))) {
+        if (!empty(session('uid'))) {
             $data['my_orders'] = $this->model->get_order_data();
             return view('order/myorder', $data);
-        // } else {
-            // return view('Home/login');
-        // }
+        } else {
+            return view('Home/login');
+        }
     }
     public function orderview($id = '')
     {
@@ -283,7 +283,7 @@ class Home extends BaseController
         $dompdf = new Dompdf();
         $data['order'] = $this->model->get_orders_details($id);
         $html =  view('invoice', $data);
-        // print_r($html);exit;
+        print_r($html);exit;
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A3', 'portrait');
         $dompdf->render();
