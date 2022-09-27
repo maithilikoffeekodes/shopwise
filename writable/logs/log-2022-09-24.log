@@ -1,0 +1,327 @@
+CRITICAL - 2022-09-24 01:42:13 --> Invalid file: hello.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('hello.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('hello', [], true)
+ 3 APPPATH\Controllers\admin\Home.php(21): view('hello')
+ 4 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\admin\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-24 01:43:08 --> Table 'shopwise.brand' doesn't exist
+CRITICAL - 2022-09-24 01:43:08 --> Table 'shopwise.brand' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `brand`
+WHERE `is_delete` = 0', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `brand`
+WHERE `is_delete` = 0')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `brand`
+WHERE `is_delete` = 0')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1669): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `brand`
+WHERE `is_delete` = :is_delete:', [...], false)
+ 5 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTableQuery.php(53): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTable.php(174): Hermawan\DataTables\DataTableQuery->countAll()
+ 7 APPPATH\Models\admin\HomeModel.php(231): Hermawan\DataTables\DataTable->toJson()
+ 8 APPPATH\Controllers\admin\Home.php(164): App\Models\admin\HomeModel->get_brand_data()
+ 9 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\admin\Home->Getdata('brand')
+10 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\Home))
+11 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-24 01:43:17 --> Table 'shopwise.brand' doesn't exist
+CRITICAL - 2022-09-24 01:43:17 --> Table 'shopwise.brand' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `brand`
+WHERE `is_delete` = 0', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `brand`
+WHERE `is_delete` = 0')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `brand`
+WHERE `is_delete` = 0')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1669): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `brand`
+WHERE `is_delete` = :is_delete:', [...], false)
+ 5 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTableQuery.php(53): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTable.php(174): Hermawan\DataTables\DataTableQuery->countAll()
+ 7 APPPATH\Models\admin\HomeModel.php(231): Hermawan\DataTables\DataTable->toJson()
+ 8 APPPATH\Controllers\admin\Home.php(164): App\Models\admin\HomeModel->get_brand_data()
+ 9 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\admin\Home->Getdata('brand')
+10 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\Home))
+11 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-24 01:48:18 --> Table 'shopwise.coupon' doesn't exist
+CRITICAL - 2022-09-24 01:48:18 --> Table 'shopwise.coupon' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `coupon`
+WHERE `is_delete` = \'0\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `coupon`
+WHERE `is_delete` = \'0\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `coupon`
+WHERE `is_delete` = \'0\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1669): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `coupon`
+WHERE `is_delete` = :is_delete:', [...], false)
+ 5 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTableQuery.php(53): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTable.php(174): Hermawan\DataTables\DataTableQuery->countAll()
+ 7 APPPATH\Models\admin\HomeModel.php(375): Hermawan\DataTables\DataTable->toJson()
+ 8 APPPATH\Controllers\admin\Home.php(184): App\Models\admin\HomeModel->get_coupon_data()
+ 9 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\admin\Home->Getdata('Coupon')
+10 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\Home))
+11 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-24 01:48:56 --> Table 'shopwise.user' doesn't exist
+CRITICAL - 2022-09-24 01:48:56 --> Table 'shopwise.user' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `name`
+FROM `user`
+WHERE `id` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `name`
+FROM `user`
+WHERE `id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `name`
+FROM `user`
+WHERE `id` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `name`
+FROM `user`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Models\admin\GeneralModel.php(31): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\admin\HomeModel.php(392): App\Models\admin\GeneralModel->get_data_table('user', [...], 'name')
+ 7 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTableQuery.php(96): App\Models\admin\HomeModel->App\Models\admin\{closure}(Object(stdClass))
+ 8 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTable.php(176): Hermawan\DataTables\DataTableQuery->getDataResult()
+ 9 APPPATH\Models\admin\HomeModel.php(403): Hermawan\DataTables\DataTable->toJson()
+10 APPPATH\Controllers\admin\Home.php(188): App\Models\admin\HomeModel->get_subscribe_data()
+11 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\admin\Home->Getdata('subscribe')
+12 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\Home))
+13 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-24 01:50:26 --> Table 'shopwise.orders' doesn't exist
+CRITICAL - 2022-09-24 01:50:26 --> Table 'shopwise.orders' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `user_id` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `user_id` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `user_id` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1669): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `user_id` IS NULL', [], false)
+ 5 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTableQuery.php(53): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTable.php(174): Hermawan\DataTables\DataTableQuery->countAll()
+ 7 APPPATH\Models\admin\HomeModel.php(359): Hermawan\DataTables\DataTable->toJson()
+ 8 APPPATH\Controllers\admin\Home.php(180): App\Models\admin\HomeModel->get_order_data()
+ 9 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\admin\Home->Getdata('order')
+10 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\Home))
+11 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 02:29:39 --> Invalid file: block/scripts.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('block/scripts.php')
+ 2 SYSTEMPATH\View\View.php(429): CodeIgniter\View\View->render('block/scripts', null, true)
+ 3 APPPATH\Views\template.php(213): CodeIgniter\View\View->include('block/scripts')
+ 4 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\template.php')
+ 5 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('template', [], true)
+ 7 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('index', [], true)
+ 8 APPPATH\Controllers\Home.php(9): view('index')
+ 9 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->index()
+10 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+11 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:02:36 --> Invalid file: shoplist.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('shoplist.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('shoplist', [], true)
+ 3 APPPATH\Controllers\Home.php(136): view('shoplist', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->shoplist()
+ 5 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:07:57 --> Invalid file: cart.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('cart.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('cart', [], true)
+ 3 APPPATH\Controllers\Home.php(205): view('cart')
+ 4 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->cart()
+ 5 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:08:05 --> Invalid file: cart.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('cart.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('cart', [], true)
+ 3 APPPATH\Controllers\Home.php(205): view('cart')
+ 4 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->cart()
+ 5 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:31:45 --> Array to string conversion
+in APPPATH\Views\productdetail.php on line 13.
+ 1 APPPATH\Views\productdetail.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Views\\productdetail.php', 13)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\productdetail.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('productdetail', [], true)
+ 5 APPPATH\Controllers\Home.php(129): view('productdetail', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('4')
+ 7 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:32:05 --> Array to string conversion
+in APPPATH\Views\productdetail.php on line 13.
+ 1 APPPATH\Views\productdetail.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Views\\productdetail.php', 13)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\productdetail.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('productdetail', [], true)
+ 5 APPPATH\Controllers\Home.php(129): view('productdetail', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('4')
+ 7 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:32:42 --> Array to string conversion
+in APPPATH\Views\productdetail.php on line 13.
+ 1 APPPATH\Views\productdetail.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Views\\productdetail.php', 13)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\productdetail.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('productdetail', [], true)
+ 5 APPPATH\Controllers\Home.php(129): view('productdetail', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('4')
+ 7 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:33:04 --> Trying to access array offset on value of type null
+in APPPATH\Models\HomeModel.php on line 160.
+ 1 APPPATH\Models\HomeModel.php(160): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Models\\HomeModel.php', 160)
+ 2 APPPATH\Controllers\Home.php(124): App\Models\HomeModel->get_product_data('FCPATH\\.')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('FCPATH\\.')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:33:05 --> Trying to access array offset on value of type null
+in APPPATH\Models\HomeModel.php on line 160.
+ 1 APPPATH\Models\HomeModel.php(160): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Models\\HomeModel.php', 160)
+ 2 APPPATH\Controllers\Home.php(124): App\Models\HomeModel->get_product_data('FCPATH\\.')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('FCPATH\\.')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:45:55 --> Trying to access array offset on value of type null
+in APPPATH\Models\HomeModel.php on line 160.
+ 1 APPPATH\Models\HomeModel.php(160): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Models\\HomeModel.php', 160)
+ 2 APPPATH\Controllers\Home.php(124): App\Models\HomeModel->get_product_data('FCPATH\\assets')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('FCPATH\\assets', 'images', 'product_img1.jpg')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:45:56 --> Trying to access array offset on value of type null
+in APPPATH\Models\HomeModel.php on line 160.
+ 1 APPPATH\Models\HomeModel.php(160): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Models\\HomeModel.php', 160)
+ 2 APPPATH\Controllers\Home.php(124): App\Models\HomeModel->get_product_data('FCPATH\\assets')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('FCPATH\\assets', 'images', 'product_small_img1.jpg')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:45:56 --> Trying to access array offset on value of type null
+in APPPATH\Models\HomeModel.php on line 160.
+ 1 APPPATH\Models\HomeModel.php(160): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Models\\HomeModel.php', 160)
+ 2 APPPATH\Controllers\Home.php(124): App\Models\HomeModel->get_product_data('FCPATH\\assets')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('FCPATH\\assets', 'images', 'product_small_img2.jpg')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:45:56 --> Trying to access array offset on value of type null
+in APPPATH\Models\HomeModel.php on line 160.
+ 1 APPPATH\Models\HomeModel.php(160): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Models\\HomeModel.php', 160)
+ 2 APPPATH\Controllers\Home.php(124): App\Models\HomeModel->get_product_data('FCPATH\\assets')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('FCPATH\\assets', 'images', 'product_small_img3.jpg')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:45:56 --> Trying to access array offset on value of type null
+in APPPATH\Models\HomeModel.php on line 160.
+ 1 APPPATH\Models\HomeModel.php(160): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Models\\HomeModel.php', 160)
+ 2 APPPATH\Controllers\Home.php(124): App\Models\HomeModel->get_product_data('FCPATH\\assets')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('FCPATH\\assets', 'images', 'product_small_img4.jpg')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 05:45:57 --> Trying to access array offset on value of type null
+in APPPATH\Models\HomeModel.php on line 160.
+ 1 APPPATH\Models\HomeModel.php(160): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Models\\HomeModel.php', 160)
+ 2 APPPATH\Controllers\Home.php(124): App\Models\HomeModel->get_product_data('FCPATH\\assets')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('FCPATH\\assets', 'images', 'product_zoom_img1.jpg')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 06:25:36 --> Trying to access array offset on value of type null
+in APPPATH\Models\HomeModel.php on line 160.
+ 1 APPPATH\Models\HomeModel.php(160): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Models\\HomeModel.php', 160)
+ 2 APPPATH\Controllers\Home.php(124): App\Models\HomeModel->get_product_data('shop-quick-view.html')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('shop-quick-view.html')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 06:25:43 --> Trying to access array offset on value of type null
+in APPPATH\Models\HomeModel.php on line 160.
+ 1 APPPATH\Models\HomeModel.php(160): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Models\\HomeModel.php', 160)
+ 2 APPPATH\Controllers\Home.php(124): App\Models\HomeModel->get_product_data('shop-quick-view.html')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('shop-quick-view.html')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 06:39:36 --> Invalid file: wishlist.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('wishlist.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('wishlist', [], true)
+ 3 APPPATH\Controllers\Home.php(237): view('wishlist', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->wishlist()
+ 5 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-24 06:44:46 --> Invalid file: contact.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('contact.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('contact', [], true)
+ 3 APPPATH\Controllers\Home.php(165): view('contact')
+ 4 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->contact()
+ 5 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
