@@ -77,7 +77,7 @@
                         <div class="footer_logo">
                             <a href="#"><img src="<?= ASSETS;?>images/logo_light.png" alt="logo"/></a>
                         </div>
-                        <p>If you are going to use of Lorem Ipsum need to be sure there isn't hidden of text</p>
+                        <p>Thank you visit our website.</p>
                     </div>
                     <div class="widget">
                         <ul class="social_icons social_white">
@@ -93,15 +93,15 @@
                 	<div class="widget">
                         <h6 class="widget_title">Useful Links</h6>
                         <ul class="widget_links">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Location</a></li>
-                            <li><a href="#">Affiliates</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="<?= url('Home/about')?>">About Us</a></li>
+                            <li><a href="<?= url('Home/faq')?>">FAQ</a></li>
+                            <!-- <li><a href="#">Location</a></li> -->
+                            <!-- <li><a href="#">Affiliates</a></li> -->
+                            <li><a href="<?= url('Home/contact')?>">Contact</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
+                <!-- <div class="col-lg-2 col-md-3 col-sm-6">
                 	<div class="widget">
                         <h6 class="widget_title">Category</h6>
                         <ul class="widget_links">
@@ -112,8 +112,8 @@
                             <li><a href="#">New Arrivals</a></li>
                         </ul>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
+                </div> -->
+                <!-- <div class="col-lg-2 col-md-6 col-sm-6">
                 	<div class="widget">
                         <h6 class="widget_title">My Account</h6>
                         <ul class="widget_links">
@@ -124,7 +124,7 @@
                             <li><a href="#">Order Tracking</a></li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
                 	<div class="widget">
                         <h6 class="widget_title">Contact Info</h6>
@@ -135,7 +135,7 @@
                             </li>
                             <li>
                                 <i class="ti-email"></i>
-                                <a href="mailto:info@sitename.com">info@sitename.com</a>
+                                <a href="mailto:info@sitename.com">info@shopwise.com</a>
                             </li>
                             <li>
                                 <i class="ti-mobile"></i>
@@ -151,7 +151,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="mb-md-0 text-center text-md-left">© 2020 All Rights Reserved by Bestwebcreator</p>
+                    <p class="mb-md-0 text-center text-md-left">© 2020 All Rights Reserved by Maithili</p>
                 </div>
                 <div class="col-md-6">
                     <ul class="footer_payment text-center text-lg-right">

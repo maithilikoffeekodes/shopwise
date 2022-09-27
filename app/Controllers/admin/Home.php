@@ -17,6 +17,9 @@ class Home extends BaseController
     }
     public function index()
     {
+    if (!session('id')) {
+        return redirect()->to(url('admin/Auth/login'));
+    }
         return view('admin/index');
     }
     public function brand()

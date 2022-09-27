@@ -12,7 +12,7 @@
                             <div class="product_header_left">
                                 <div class="custom_select">
                                     <select class="form-control form-control-sm" id="price">
-                                        <option value="order">Default sorting</option>
+                                        <!-- <option value="order">Default sorting</option> -->
                                         <!-- <option value="popularity">Sort by popularity</option> -->
                                         <option value="1">Sort by newness</option>
                                         <option value="2">Sort by price: low to high</option>
@@ -42,20 +42,20 @@
             </div>
             <div class="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0">
                 <div class="sidebar">
-
+                    <label><a href="<?= url('Home/shoplist')?>">Clear All Filters</a></label>
                     <div class="widget">
                         <h5 class="widget_title">Filter</h5>
-                        <div class="filter_price">
-                            <div id="price_filter" data-min="0" data-max="500" data-min-value="50" data-max-value="300" data-price-sign="$"></div>
-                            <div class="price_range">
-                                <span>Price: <span id="flt_price"></span></span>
-                                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                        <!-- <div class="filter_price"> -->
+                            <!-- <div id="price_filter" data-min="0" data-max="500" data-min-value="0" data-max-value="500" data-price-sign="Rs"></div> -->
+                            <!-- <div class="price_range"> -->
+                                <span>Price: </span>
+                                <input type="text" id="amount" readonly style="border:0; color:#FF324D; font-weight:bold;">
                                 <input type="hidden" name="min_price" id="min">
                                 <input type="hidden" name="max_price" id="max">
-                            </div>
+                            <!-- </div> -->
 
                             <div id="slider-range"></div>
-                        </div>
+                        <!-- </div> -->
                     </div>
                     <div class="widget">
                         <h5 class="widget_title">Brand</h5>

@@ -742,12 +742,15 @@ class HomeModel extends Model
     }
     public function insert_edit_contact($post)
     {
+        // echo"<pre>";print_r($post);exit;
+
         $db = $this->db;
         $builder = $db->table("contact");
         $query = $builder->get();
         $pdata = array(
             'name' => $post['name'],
             'email' => $post['email'],
+            'phone' => $post['phone'],
             'subject' => $post['subject'],
             'message' => $post['message']
         );

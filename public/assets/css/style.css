@@ -6806,7 +6806,7 @@ footer .widget_title {
 
 .filter_price .ui-slider .ui-slider-handle {
     cursor: pointer;
-    background-color: #fff;
+    background-color: #000;
     border-radius: 100%;
     border: 0;
     height: 18px;

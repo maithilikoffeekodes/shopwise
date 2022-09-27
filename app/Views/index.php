@@ -55,7 +55,7 @@
                     <div class="single_banner_info">
                         <h5 class="single_bn_title1">Super Sale</h5>
                         <h3 class="single_bn_title">New Collection</h3>
-                        <a href="shop-left-sidebar.html" class="single_bn_link">Shop Now</a>
+                        <a href="<?= url('Home/shoplist')?>" class="single_bn_link">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                     <div class="single_banner_info">
                         <h3 class="single_bn_title">New Season</h3>
                         <h4 class="single_bn_title1">Sale 40% Off</h4>
-                        <a href="shop-left-sidebar.html" class="single_bn_link">Shop Now</a>
+                        <a href="<?= url('Home/shoplist')?>" class="single_bn_link">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -964,62 +964,23 @@
         <div class="row justify-content-center">
             <div class="col-lg-9">
             	<div class="testimonial_wrap testimonial_style1 carousel_slider owl-carousel owl-theme nav_style2" data-nav="true" data-dots="false" data-center="true" data-loop="true" data-autoplay="true" data-items='1'>
+                <?php foreach ($review as $row) { ?>
+
                 	<div class="testimonial_box">
                     	<div class="testimonial_desc">
-                        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio, enim error eum iste libero modi nam natus perferendis possimus quasi sint sit tempora voluptatem.</p>
+                        	<p><?= $row['review'] ?></p>
                         </div>
                         <div class="author_wrap">
                             <div class="author_img">
-                                <img src="<?= ASSETS;?>images/user_img1.jpg" alt="user_img1" />
+                                <!-- <img src="<?= ASSETS;?>images/user_img1.jpg" alt="user_img1" /> -->
                             </div>
                             <div class="author_name">
-                                <h6>Lissa Castro</h6>
-                                <span>Designer</span>
+                                <h6><?= $row['name'] ?></h6>
+                                <!-- <span>Designer</span> -->
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial_box">
-                    	<div class="testimonial_desc">
-                        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio, enim error eum iste libero modi nam natus perferendis possimus quasi sint sit tempora voluptatem.</p>
-                        </div>
-                        <div class="author_wrap">
-                            <div class="author_img">
-                                <img src="<?= ASSETS;?>images/user_img2.jpg" alt="user_img2" />
-                            </div>
-                            <div class="author_name">
-                                <h6>Alden Smith</h6>
-                                <span>Designer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial_box">
-                    	<div class="testimonial_desc">
-                        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio, enim error eum iste libero modi nam natus perferendis possimus quasi sint sit tempora voluptatem.</p>
-                        </div>
-                        <div class="author_wrap">
-                            <div class="author_img">
-                                <img src="<?= ASSETS;?>images/user_img3.jpg" alt="user_img3" />
-                            </div>
-                            <div class="author_name">
-                                <h6>Daisy Lana</h6>
-                                <span>Designer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial_box">
-                    	<div class="testimonial_desc">
-                        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio, enim error eum iste libero modi nam natus perferendis possimus quasi sint sit tempora voluptatem.</p>
-                        </div>
-                        <div class="author_wrap">
-                            <div class="author_img">
-                                <img src="<?= ASSETS;?>images/user_img4.jpg" alt="user_img4" />
-                            </div>
-                            <div class="author_name">
-                                <h6>John Becker</h6>
-                                <span>Designer</span>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
