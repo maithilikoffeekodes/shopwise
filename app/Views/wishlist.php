@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?= url('Home/index')?>">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item active">Wishlist</li>
                 </ol>
@@ -27,7 +27,7 @@
             <div class="col-12">
                 <div class="table-responsive wishlist_table">
                     <table class="table" id="table_list_data" data-id="wishlist" data-module="Home">
-                        <thead class="text-center">
+                        <thead class="text-center" style="background-color:#FF324D ;color:white;">
                             <tr>
                                 <th class="product-thumbnail">Image</th>
                                 <th class="product-name">Product</th>

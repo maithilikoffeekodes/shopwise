@@ -16,7 +16,7 @@
                 <div class="col-12 col-lg-7 col-md-12">
                     <div class="d-block mb-3">
                         <table class="table table-borderless table-hover text-center mb-0" id="table_list_data" data-id="cart1" data-module="Home" data-filter_data=''>
-                            <thead class="thead text-center" style="background-color:#343a40 ; color:white;">
+                            <thead class="thead text-center" style="background-color:#FF324D ; color:white;">
                                 <tr>
                                     <th>Image</th>
                                     <th>Products</th>
@@ -209,10 +209,10 @@
 
 
 <div class="row mb-4">
-    <div class="col-12 d-block">
+    <!-- <div class="col-12 d-block">
         <input id="createaccount" class="checkbox-custom" name="createaccount" type="checkbox">
         <label for="createaccount" class="checkbox-custom-label">Create An Account?</label>
-    </div>
+    </div> -->
 </div>
 </div>
 <div class="col-12 col-lg-4 col-md-12" style="margin-top: 75px;">
@@ -220,18 +220,18 @@
         <div class="card-body">
             <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
                 <li class="list-group-item d-flex text-dark fs-sm ft-regular">
-                <input type="hidden" name="sub_total" id="sub_total" value='0'>
+                    <input type="hidden" name="sub_total" id="sub_total" value='0'>
                     <span>Subtotal</span> <span class="ml-auto text-dark ft-medium sub_total_amt">0</span>
                 </li>
                 <li class="list-group-item d-flex text-dark fs-sm ft-regular">
-                <input type="hidden" name="tax_amt" id="tax_amt" value='0'>
+                    <input type="hidden" name="tax_amt" id="tax_amt" value='0'>
                     <span>Tax</span> (<span class="gst">%</span>) <span class="ml-auto text-dark ft-medium tax">0</span>
                 </li>
                 <li class="list-group-item d-flex text-dark fs-sm ft-regular">
                     <span>Delivery Charges</span> <span class="ml-auto text-dark ft-medium">0</span>
                 </li>
                 <li class="list-group-item d-flex text-dark fs-sm ft-regular" id="discount">
-                <input type="hidden" name="coupon-discount" id="coupon-discount" value='0'>
+                    <input type="hidden" name="coupon-discount" id="coupon-discount" value='0'>
                     <span>Coupons Discount</span> <span class="ml-auto text-dark ft-medium coupon-discount">0</span>
                 </li>
                 <li class="list-group-item d-flex text-dark fs-sm ft-regular">
@@ -526,7 +526,7 @@
         $('#sub_total').val(parseFloat(total));
         $(".total_amt").text($(".sub_total_amt").text());
         var grand_tot = $(".sub_total_amt").text();
-    
+
 
         var x = parseInt($('.sub_total_amt').text());
         var cal = x * tax / 100;

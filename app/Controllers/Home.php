@@ -283,7 +283,6 @@ class Home extends BaseController
         $dompdf = new Dompdf();
         $data['order'] = $this->model->get_orders_details($id);
         $html =  view('invoice', $data);
-        print_r($html);exit;
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A3', 'portrait');
         $dompdf->render();

@@ -23,7 +23,7 @@
 			</div>
 			<div class="col-md-6">
 				<ol class="breadcrumb justify-content-md-end">
-					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item"><a href="<?= url('Home/index')?>">Home</a></li>
 					<li class="breadcrumb-item"><a href="#">Pages</a></li>
 					<li class="breadcrumb-item active">Shopping Cart</li>
 				</ol>
@@ -38,7 +38,7 @@
 		<div class="row justify-content-between">
 				<div class="col-12 col-lg-7 col-md-12">
 					<table class="table table-borderless table-hover text-center mb-0" id="table_list_data" data-id="cart" data-module="Home" data-filter_data=''>
-						<thead class="thead text-center" style="background-color:#343a40 ; color:white;">
+						<thead class="thead text-center" style="background-color:#FF324D ;color:white;">
 							<tr>
 								<th>Image</th>
 								<th>Products</th>
@@ -62,7 +62,7 @@
 										<input class="form-control coupon" type="text" placeholder="Enter coupon code*" name="coupon-apply">
 									</div>
 									<div class="col-auto">
-										<button class="btn btn-dark applycoupon" type="submit">Apply</button>
+										<button class="btn btn-fill-out btn-block applycoupon" type="submit">Apply</button>
 									</div>
 								</div>
 								<div class="error-msg text-danger"></div>

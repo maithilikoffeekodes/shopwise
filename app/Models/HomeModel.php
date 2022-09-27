@@ -472,18 +472,18 @@ class HomeModel extends Model
         $builder->where('o.id', $id);
         $query = $builder->get();
         $order_detail1 = $query->getResultArray();
-        echo "<pre>";
-        print_r($order_detail1);
-        exit;
+        // echo "<pre>";
+        // print_r($order_detail1);
+        // exit;
 
-        $order_detail1['order_date'] = $order_detail1['created_at'];
+        // $order_detail1['order_date'] = $order_detail1['created_at'];
         if ($order_detail1[0]['default_add'] != 0) {
             $db = $this->db;
             $builder = $db->table('user u');
             $builder->select('u.*,s.sname as state_name,c.cname as city_name');
             $builder->join('cities c', 'c.id=u.city');
             $builder->join('states s', 's.id=u.state');
-            $builder->where('u.id', $order_detail1['default_add']);
+            $builder->where('u.id', $order_detail1[0]['default_add']);
             $builder->where('u.is_delete', 0);
             $query = $builder->get();
             $order_detail2 = $query->getRowArray();
@@ -493,7 +493,7 @@ class HomeModel extends Model
             $builder->select('a.*,s.sname as state_name,c.cname as city_name');
             $builder->join('cities c', 'c.id=a.city');
             $builder->join('states s', 's.id=a.state');
-            $builder->where('a.id', $order_detail1['ship_id']);
+            $builder->where('a.id', $order_detail1[0]['ship_id']);
             $builder->where('a.is_delete', 0);
             $query = $builder->get();
             $order_detail2 = $query->getRowArray();
