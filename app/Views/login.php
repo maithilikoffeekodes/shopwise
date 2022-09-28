@@ -13,7 +13,7 @@
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
                     <li class="breadcrumb-item"><a href="<?= url('Home/index')?>">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <!-- <li class="breadcrumb-item"><a href="#">Pages</a></li> -->
                     <li class="breadcrumb-item active">Login</li>
                 </ol>
             </div>

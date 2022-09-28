@@ -103,7 +103,7 @@
     }
 
     i {
-        font-size: 30px;
+        font-size: 17px;
     }
 
     .itemside {
@@ -214,7 +214,7 @@
 
                     ?>
                     <div class="col"> <strong>Estimated Delivery time:</strong> <br><?php echo $delivery_date ?></div>
-                    <div class="col"> <strong>Shipping BY:</strong> <br> Shopwise, | <i class="fa fa-phone"></i> +457 789 789 65 </div>
+                    <div class="col"> <strong>Shipping BY:</strong> <br> Shopwise<br> <i class="fa fa-phone"></i> +91 8879858754 </div>
                     <div class="col"> <strong>Status:</strong> <br><?php echo $status ?></div>
                     <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
                 </div>

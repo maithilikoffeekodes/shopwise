@@ -55,7 +55,7 @@
                     <div class="single_banner_info">
                         <h5 class="single_bn_title1">Super Sale</h5>
                         <h3 class="single_bn_title">New Collection</h3>
-                        <a href="<?= url('Home/shoplist')?>" class="single_bn_link">Shop Now</a>
+                        <a href="<?= url('Home/shoplist') ?>" class="single_bn_link">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                     <div class="single_banner_info">
                         <h3 class="single_bn_title">New Season</h3>
                         <h4 class="single_bn_title1">Sale 40% Off</h4>
-                        <a href="<?= url('Home/shoplist')?>" class="single_bn_link">Shop Now</a>
+                        <a href="<?= url('Home/shoplist') ?>" class="single_bn_link">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -108,46 +108,54 @@
                         <div class="row shop_container">
                             <?php foreach ($rand_item as $row) { ?>
                                 <div class="col-lg-3 col-md-4 col-6">
-                                    <div class="product">
-                                        <div class="product_img">
-                                            <a href="<?= url('Home/productdetail/' . $row['id']) ?>">
+                                    <a href="<?= url('Home/productdetail/' . $row['id']) ?>">
+                                        <div class="product">
+                                            <a class="product_img" href="<?= url('Home/productdetail/' . $row['id']) ?>">
                                                 <img src="<?= $row['image'] ?>" alt="product_img1" style="width: 300px;height:300px;">
                                             </a>
-                                            <div class="product_action_box">
-                                                <ul class="list_none pr_action_btn">
-                                                    <li type="submit" class="add-to-cart"><a><i class="icon-basket-loaded cartbtn" id="cartbtn" data-product_id="<?php echo @$row['id'] ?> " data-price="<?= @$row['listedprice'] ?>" data-quantity="1"></i> Add To Cart</a></li>
-
-                                                    <li type="submit"><a><i class="icon-heart wish" id="wishlist" data-product_id="<?php echo @$row['id'] ?> " data-price="<?= @$row['listedprice'] ?>" data-quantity="1"></i></a></li>
+                                            <div class="product-left-hover-overlay">
+                                                <ul class="left-over-buttons">
+                                                    <li><a class="d-inline-flex circle align-items-center justify-content-center wish" id="wishlist" data-product_id="<?php echo @$row['id'] ?> " data-price="<?= @$row['listedprice'] ?>" data-quantity="1"><i class="far fa-heart position-absolute"></i></a></li>
+                                                    <li><a class="d-inline-flex circle align-items-center justify-content-center  cartbtn" id="cartbtn" data-product_id="<?php echo @$row['id'] ?> " data-price="<?= @$row['listedprice'] ?>" data-quantity="1"><i class="icon-basket-loaded position-absolute"></i></a></li>
                                                 </ul>
                                             </div>
-                                        </div>
-                                        <div class="product_info">
-                                            <h6 class="product_title"><a href="<?= url('Home/productdetail/' . $row['id']) ?>"><?= $row['name'] ?></a></h6>
-                                            <div class="product_price">
-                                                <span class="price">&#8377 <?= $row['listedprice'] ?></span>
-                                                <del>&#8377 <?= $row['price'] ?></del>
-                                                <div class="on_sale">
-                                                    <span><?= $row['discount'] ?>% Off</span>
+                                            <div class="product_info">
+                                                <h6 class="product_title"><a href="<?= url('Home/productdetail/' . $row['id']) ?>"><?= $row['name'] ?></a></h6>
+                                                <div class="product_price">
+                                                    <span class="price">&#8377 <?= $row['listedprice'] ?></span>
+                                                    <del>&#8377 <?= $row['price'] ?></del>
+                                                    <div class="on_sale">
+                                                        <span><?= $row['discount'] ?>% Off</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="rating_wrap">
-                                                <div class="rating">
-                                                    <div class="product_rate" style="width:80%"></div>
+                                                <div class="rating_wrap">
+                                                    <div class="">
+                                                        <div class="single_capt_right">
+                                                            <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                                <?php for ($i = 1; $i <= get_review_count(@$row['id']); $i++) { ?>
+                                                                    <i class="fas fa-star filled" value="1"></i>
+                                                                <?php } ?>
+                                                                <?php for ($i = 1; $i <= 5 - (int)get_review_count(@$row['id']); $i++) { ?>
+                                                                    <i class="far fa-star filled" value="1"></i>
+                                                                <?php } ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="rating_num">(<?= get_review_total($row['id']) ?>)</span>
                                                 </div>
-                                                <span class="rating_num">(21)</span>
-                                            </div>
-                                            <div class="pr_desc">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                            </div>
-                                            <!-- <div class="pr_switch_wrap">
+                                                <div class="pr_desc">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+                                                </div>
+                                                <!-- <div class="pr_switch_wrap">
                                                 <div class="product_color_switch">
                                                     <span class="active" data-color="#87554B"></span>
                                                     <span data-color="#333333"></span>
                                                     <span data-color="#DA323F"></span>
                                                 </div>
                                             </div> -->
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             <?php } ?>
                             <div class="" style="margin-left: 500px;">
@@ -191,10 +199,19 @@
                                             </div>
                                         </div>
                                         <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
+                                            <div class="">
+                                                <div class="single_capt_right">
+                                                    <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                        <?php for ($i = 1; $i <= get_review_count(@$row['id']); $i++) { ?>
+                                                            <i class="fas fa-star filled" value="1"></i>
+                                                        <?php } ?>
+                                                        <?php for ($i = 1; $i <= 5 - (int)get_review_count(@$row['id']); $i++) { ?>
+                                                            <i class="far fa-star filled" value="1"></i>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <span class="rating_num">(21)</span>
+                                            <span class="rating_num">(<?= get_review_total($row['id']) ?>)</span>
                                         </div>
                                         <div class="pr_desc">
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
@@ -277,10 +294,19 @@
                                             </div>
                                         </div>
                                         <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
+                                            <div class="">
+                                                <div class="single_capt_right">
+                                                    <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                        <?php for ($i = 1; $i <= get_review_count(@$row['id']); $i++) { ?>
+                                                            <i class="fas fa-star filled" value="1"></i>
+                                                        <?php } ?>
+                                                        <?php for ($i = 1; $i <= 5 - (int)get_review_count(@$row['id']); $i++) { ?>
+                                                            <i class="far fa-star filled" value="1"></i>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <span class="rating_num">(21)</span>
+                                            <span class="rating_num">(<?= get_review_total($row['id']) ?>)</span>
                                         </div>
                                         <div class="pr_desc">
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
@@ -583,10 +609,19 @@
                                             </div>
                                         </div>
                                         <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
+                                            <div class="">
+                                                <div class="single_capt_right">
+                                                    <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                        <?php for ($i = 1; $i <= get_review_count(@$row['id']); $i++) { ?>
+                                                            <i class="fas fa-star filled" value="1"></i>
+                                                        <?php } ?>
+                                                        <?php for ($i = 1; $i <= 5 - (int)get_review_count(@$row['id']); $i++) { ?>
+                                                            <i class="far fa-star filled" value="1"></i>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <span class="rating_num">(21)</span>
+                                            <span class="rating_num">(<?= get_review_total($row['id']) ?>)</span>
                                         </div>
                                         <div class="pr_desc">
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
@@ -670,10 +705,19 @@
                                             </div>
                                         </div>
                                         <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
+                                            <div class="">
+                                                <div class="single_capt_right">
+                                                    <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                        <?php for ($i = 1; $i <= get_review_count(@$row['id']); $i++) { ?>
+                                                            <i class="fas fa-star filled" value="1"></i>
+                                                        <?php } ?>
+                                                        <?php for ($i = 1; $i <= 5 - (int)get_review_count(@$row['id']); $i++) { ?>
+                                                            <i class="far fa-star filled" value="1"></i>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <span class="rating_num">(21)</span>
+                                            <span class="rating_num">(<?= get_review_total($row['id']) ?>)</span>
                                         </div>
                                         <div class="pr_desc">
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
@@ -923,7 +967,7 @@
                                     </div>
                                 </div>
                                 <div class="product_info">
-                                    <h6 class="product_title"><a href="<?= url('Home/productdetail/' . $row['id']) ?>"><?= $row['name']?></a></h6>
+                                    <h6 class="product_title"><a href="<?= url('Home/productdetail/' . $row['id']) ?>"><?= $row['name'] ?></a></h6>
                                     <div class="product_price">
                                         <span class="price">&#8377 <?= $row['listedprice'] ?></span>
                                         <del>&#8377 <?= $row['price'] ?></del>
@@ -932,15 +976,24 @@
                                         </div>
                                     </div>
                                     <div class="rating_wrap">
-                                        <div class="rating">
-                                            <div class="product_rate" style="width:80%"></div>
+                                        <div class="">
+                                            <div class="single_capt_right">
+                                                <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                    <?php for ($i = 1; $i <= get_review_count(@$row['id']); $i++) { ?>
+                                                        <i class="fas fa-star filled" value="1"></i>
+                                                    <?php } ?>
+                                                    <?php for ($i = 1; $i <= 5 - (int)get_review_count(@$row['id']); $i++) { ?>
+                                                        <i class="far fa-star filled" value="1"></i>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <span class="rating_num">(21)</span>
+                                        <span class="rating_num">(<?= get_review_total($row['id']) ?>)</span>
                                     </div>
                                     <div class="pr_desc">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -953,33 +1006,33 @@
 <!-- END SECTION SHOP -->
 <!-- START SECTION TESTIMONIAL -->
 <div class="section bg_redon">
-	<div class="container">
-    	<div class="row justify-content-center">
-        	<div class="col-md-6">
-            	<div class="heading_s1 text-center">
-                	<h2>Our Client Say!</h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="heading_s1 text-center">
+                    <h2>Our Client Say!</h2>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-9">
-            	<div class="testimonial_wrap testimonial_style1 carousel_slider owl-carousel owl-theme nav_style2" data-nav="true" data-dots="false" data-center="true" data-loop="true" data-autoplay="true" data-items='1'>
-                <?php foreach ($review as $row) { ?>
+                <div class="testimonial_wrap testimonial_style1 carousel_slider owl-carousel owl-theme nav_style2" data-nav="true" data-dots="false" data-center="true" data-loop="true" data-autoplay="true" data-items='1'>
+                    <?php foreach ($review as $row) { ?>
 
-                	<div class="testimonial_box">
-                    	<div class="testimonial_desc">
-                        	<p><?= $row['review'] ?></p>
-                        </div>
-                        <div class="author_wrap">
-                            <div class="author_img">
-                                <!-- <img src="<?= ASSETS;?>images/user_img1.jpg" alt="user_img1" /> -->
+                        <div class="testimonial_box">
+                            <div class="testimonial_desc">
+                                <p><?= $row['review'] ?></p>
                             </div>
-                            <div class="author_name">
-                                <h6><?= $row['name'] ?></h6>
-                                <!-- <span>Designer</span> -->
+                            <div class="author_wrap">
+                                <div class="author_img">
+                                    <!-- <img src="<?= ASSETS; ?>images/user_img1.jpg" alt="user_img1" /> -->
+                                </div>
+                                <div class="author_name">
+                                    <h6><?= $row['name'] ?></h6>
+                                    <!-- <span>Designer</span> -->
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <?php } ?>
                 </div>
             </div>

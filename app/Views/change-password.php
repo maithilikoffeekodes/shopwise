@@ -2,60 +2,78 @@
 
 <?= $this->section('content') ?>
 
+<div class="breadcrumb_section bg_gray page-title-mini">
+	<div class="container">
+		<!-- STRART CONTAINER -->
+		<div class="row align-items-center">
+			<div class="col-md-6">
+				<div class="page-title">
+					<h1>Change Password</h1>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<ol class="breadcrumb justify-content-md-end">
+					<li class="breadcrumb-item"><a href="<?= url('Home/index')?>">Home</a></li>
+				 <!-- <li class="breadcrumb-item"><a href="#">Pages</a></li> -->
+					<li class="breadcrumb-item active">Change Password</li>
+				</ol>
+			</div>
+		</div>
+	</div><!-- END CONTAINER-->
+</div>
 
 <section class="middle">
     <div class="container">
-        <div class="row align-items-start justify-content-between">
+        <div class="row">
 
-            
+            <div class="row align-items-start justify-content-between mt-5">
+                <div class="col-12 col-md-12 col-lg-8 col-xl-8">
+                    <!-- row -->
+                    <div class="row align-items-center">
 
-            <div class="col-12 col-md-12 col-lg-8 col-xl-8">
-                <!-- row -->
-                <div class="row align-items-center">
+                        <form action="<?= url('Home/change_password') ?>" method="post" class="ajax-form-submit row m-0">
 
-                    <form action="<?= url('Home/change_password') ?>" method="post" class="ajax-form-submit row m-0">
-
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                            <div class="form-group">
-                                <label class="small text-dark ft-medium">Current Password *</label>
-                                <input type="password" class="form-control" name="password" value="" required />
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label class="small text-dark ft-medium">Current Password *</label>
+                                    <input type="password" class="form-control" name="password" value="" required />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                            <div class="form-group">
-                                <label class="small text-dark ft-medium">New Password *</label>
-                                <input type="password" class="form-control" name="npassword" value="" required />
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label class="small text-dark ft-medium">New Password *</label>
+                                    <input type="password" class="form-control" name="npassword" value="" required />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                            <div class="form-group">
-                                <label class="small text-dark ft-medium">Confirm Password*</label>
-                                <input type="password" class="form-control" name="cpassword" value="" required />
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label class="small text-dark ft-medium">Confirm Password*</label>
+                                    <input type="password" class="form-control" name="cpassword" value="" required />
+                                </div>
                             </div>
-                        </div>
-                        <?php if (!empty($msg) && $msg['st'] == 'failed') { ?>
-                            <div class="alert alert-danger alert-dismissible" role="alert">
-                                <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="mdi mdi-close" aria-hidden="true"></span></button>
-                                <div class="icon"> <span class="mdi mdi-close-circle-o"></span></div>
-                                <div class="message"><strong>Failed!</strong> <?= $msg['msg']; ?></div>
+                            <?php if (!empty($msg) && $msg['st'] == 'failed') { ?>
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="mdi mdi-close" aria-hidden="true"></span></button>
+                                    <div class="icon"> <span class="mdi mdi-close-circle-o"></span></div>
+                                    <div class="message"><strong>Failed!</strong> <?= $msg['msg']; ?></div>
+                                </div>
+                            <?php } ?>
+                            <div class="error-msg"></div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <button type="submit" id="save_data" class="btn btn btn-fill-out">Save Changes</button>
+                                </div>
                             </div>
-                        <?php } ?>
-                        <div class="error-msg"></div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                            <div class="form-group">
-                                <button type="submit" id="save_data" class="btn btn btn-fill-out">Save Changes</button>
-                            </div>
-                        </div>
 
-                    </form>
+                        </form>
+                    </div>
+                    <!-- row -->
                 </div>
-                <!-- row -->
-            </div>
 
+            </div>
         </div>
-    </div>
 </section>
 <?= $this->endSection() ?>
 

@@ -5,7 +5,7 @@
 <section class="middle">
     <div class="container">
 
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="text-center d-block mb-5">
                 <h1>Forgot Password?</h1>

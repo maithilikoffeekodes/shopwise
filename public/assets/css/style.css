@@ -6233,7 +6233,7 @@ footer .widget_title {
 
 .pr_action_btn {
     display: table;
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
 
 .product_img {
@@ -6248,7 +6248,7 @@ footer .widget_title {
     right: 0;
     bottom: 0;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgb(255 255 255 / 0%);
     opacity: 0;
     transition: all 0.5s ease-in-out;
     z-index: 1;
@@ -6261,8 +6261,8 @@ footer .widget_title {
 
 .pr_action_btn li {
     position: relative;
-    margin: 0px 5px;
-    display: inline-block;
+    margin: 5px 5px;
+    /* display: inline-block; */
 }
 
 .product_wrap .pr_action_btn li {
@@ -6474,6 +6474,50 @@ footer .widget_title {
 
 .product_list .product_img::before {
     content: normal;
+}
+
+.product-left-hover-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    visibility: hidden;
+    padding: 0.8rem 0.4rem;
+    -webkit-transform: translatex(2rem);
+    transform: translatex(2rem);
+    opacity: 0;
+    display: -ms-flexbox;
+    display: flex;
+    width: auto;
+    transition: all 0.3s;
+    background: transparent;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    z-index: 20;
+}
+
+.product:hover .product-left-hover-overlay {
+    visibility: visible;
+    -webkit-transform: translatex(0);
+    transform: translatex(0);
+    opacity: 1;
+}
+
+.left-over-buttons {
+    padding: 0;
+    margin: 0;
+}
+
+.left-over-buttons li {
+    display: block;
+    list-style: none;
+    padding: 5px 0;
+}
+
+.left-over-buttons li a {
+    background: #ffffff;
+    padding: 1.2rem;
 }
 
 .mfp-ajax-holder .mfp-content .ajax_quick_view {
@@ -7058,6 +7102,25 @@ footer .widget_title {
 
 .releted_product_slider .item {
     margin: 10px 0px 0px;
+}
+
+.star-rating {
+    padding: 2px 0;
+}
+
+.star-rating i {
+    margin-right: 2.5px;
+    font-size: 12px;
+    color: #d6dde6;
+}
+
+.star-rating i.filled {
+    color: #F6BC3E;
+}
+
+.star-rating .small,
+.medium {
+    font-size: 95%;
 }
 
 .releted_product_slider .product {

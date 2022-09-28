@@ -982,17 +982,15 @@ class HomeModel extends Model
             $output .= '
             <div class="col-md-4 col-6">
             <div class="product">
-                <div class="product_img">
-                    <a href="' . url('Home/productdetail/' . $row['id']) . '">
-                        <img src="' . $row['image'] . '" alt="product_img1" style="width: 300px;height:300px;">
-                    </a>
-                    <div class="product_action_box">
-                        <ul class="list_none pr_action_btn">
-                            <li type="submit" class="add-to-cart cartbtn" id="cartbtn" data-product_id="' . @$row['id'] . ' " data-price="' . @$row['listedprice'] . '" data-quantity="1"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                            <li type="submit" ><a href="#"><i class="icon-heart wish" id="wishlist" data-product_id="' .  @$row['id'] . ' " data-price="' . @$row['listedprice'] . '" data-quantity="1"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
+            <a class="product_img" href="' . url('Home/productdetail/' . $row['id']) . '">
+            <img src="' . $row['image'] . '" alt="product_img1" style="width: 300px;height:300px;">
+        </a>
+        <div class="product-left-hover-overlay">
+            <ul class="left-over-buttons">
+                <li><a class="d-inline-flex circle align-items-center justify-content-center wish" id="wishlist" data-product_id="' .  @$row['id'] . ' " data-price="' . @$row['listedprice'] . '" data-quantity="1"><i class="far fa-heart position-absolute"></i></a></li>
+                <li><a class="d-inline-flex circle align-items-center justify-content-center  cartbtn" id="cartbtn" data-product_id="' .  @$row['id'] . ' " data-price="' . @$row['listedprice'] . '" data-quantity="1"><i class="icon-basket-loaded position-absolute"></i></a></li>
+            </ul>
+        </div>
                 <div class="product_info">
                     <h6 class="product_title"><a href="' . url('Home/productdetail/' . $row['id']) . '">' . $row['name'] . '</a></h6>
                     <div class="product_price">
@@ -1003,11 +1001,19 @@ class HomeModel extends Model
                              </div>
                     </div>
                     <div class="rating_wrap">
-                        <div class="rating">
-                            <div class="product_rate" style="width:80%"></div>
-                        </div>
-                        <span class="rating_num">(21)</span>
-                    </div>
+                        <div class="">
+                            <div class="single_capt_right">
+                                <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">';
+                                    for ($i = 1; $i <= get_review_count(@$row['id']); $i++) {
+                $output .= '            <i class="fas fa-star filled" value="1"></i>';
+                                    }for ($i = 1; $i <= 5 - (int)get_review_count(@$row['id']); $i++) { 
+                $output .= '            <i class="far fa-star filled" value="1"></i>';
+                                    }
+                $output .= '            </div>
+                                    </div>
+                                </div>
+                                <span class="rating_num">('. get_review_total($row['id']) .')</span>
+                            </div>
                     <div class="pr_desc">
                         <p>' . $row['description'] . '</p>
                     </div>

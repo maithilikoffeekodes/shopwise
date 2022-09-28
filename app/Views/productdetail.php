@@ -8,6 +8,31 @@
             <?php //echo"<pre>";print_r($product);exit;
             ?>
             <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+                <!-- <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner bg-light">
+
+                    <?php $image = @$product['image']; ?>
+                    <div class="carousel-item active">
+                        <img class="w-100" src="<?= $product['image'][0]; ?>" alt="Product Image" style="height: 500px ;">
+                    </div>
+                    <?php
+                    for ($i = 1; $i < count($image); $i++) {
+                    ?>
+                        <div class="carousel-item">
+                            <img class="w-100" src="<?= $product['image'][$i]; ?>" alt="Product Image" style="height: 500px ;">
+
+                        </div>
+
+                    <?php } ?>
+
+                </div>
+                <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
+                    <i class="fa fa-2x fa-angle-left text-dark"></i>
+                </a>
+                <a class="carousel-control-next" href="#product-carousel" data-slide="next">
+                    <i class="fa fa-2x fa-angle-right text-dark"></i>
+                </a>
+            </div> -->
                 <div class="product-image">
                     <div class="product_img_box">
                         <img id="product_img" src='<?= @$product['image'][0] ?>' data-zoom-image="<?= $product['image'][0] ?>" alt="product_img1" />
@@ -41,17 +66,19 @@
                             </div>
                         </div>
                         <div class="rating_wrap">
-                            <div class="rating">
-                                <div class="product_rate" style="width:80%">
-                                <?php for (@$i = 1; @$i <=  get_review_count($product['id']); @$i++) { ?>
-                                    <i class="text-primary fas fa-star" value="1"></i>
-                                <?php } ?>
-                                <?php for (@$i = 1; @$i <= 5 - (int) get_review_count($product['id']); @$i++) { ?>
-                                    <i class="text-primary far fa-star" value="1"></i>
-                                <?php } ?>
+                            <div class="">
+                                <div class="single_capt_right">
+                                    <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                        <?php for ($i = 1; $i <= get_review_count(@$product['id']); $i++) { ?>
+                                            <i class="fas fa-star filled" value="1"></i>
+                                        <?php } ?>
+                                        <?php for ($i = 1; $i <= 5 - (int)get_review_count(@$product['id']); $i++) { ?>
+                                            <i class="far fa-star filled" value="1"></i>
+                                        <?php } ?>
+                                    </div>
+                                </div>
                             </div>
-                            </div>
-                            <span class="rating_num">(21)</span>
+                            <span class="rating_num">(<?= get_review_total($product['id']) ?>)</span>
                         </div>
                         <div class="pr_desc">
                             <p><?= $product['description'] ?></p>
@@ -86,9 +113,9 @@
                     <div class="cart_extra">
                         <div class="cart-product-quantity">
                             <div class="quantity">
-                                <input type="button" value="-" class="minus" onclick="decrement(this)" style="margin-top: -3px;">
-                                <input type="text" name="qty" value="1" title="Qty" class="quantity text-center" min="1" max="10" style="width:43px ;">
-                                <input type="button" value="+" class="plus" onclick="increment(this)" style="margin-top: -38px;margin-left: 90px;">
+                                <input type="button" value="-" class="minus" onclick="decrement(this)">
+                                <input type="text" name="qty" value="1" title="Qty" class="quantity qty text-center" min="1" max="10" style="width:43px ;" size="4">
+                                <input type="button" value="+" class="plus" onclick="increment(this)">
                             </div>
                         </div>
                         <div class="cart_btn">
@@ -156,14 +183,16 @@
                                             </div> -->
                                             <div class="comment_block">
                                                 <div class="rating_wrap">
-                                                    <div class="rating">
-                                                        <div class="product_rate" style="width:80%">
-                                                            <?php for ($i = 1; $i <= @$row['rating']; $i++) { ?>
-                                                                <i class="fas fa-star filled" value="1"></i>
-                                                            <?php } ?>
-                                                            <?php for ($i = 1; $i <= 5 - (int)@$row['rating']; $i++) { ?>
-                                                                <i class="far fa-star filled" value="1"></i>
-                                                            <?php } ?>
+                                                    <div class="">
+                                                        <div class="single_capt_right">
+                                                            <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                                <?php for ($i = 1; $i <= @$row['rating']; $i++) { ?>
+                                                                    <i class="fas fa-star filled" value="1"></i>
+                                                                <?php } ?>
+                                                                <?php for ($i = 1; $i <= 5 - (int)@$row['rating']; $i++) { ?>
+                                                                    <i class="far fa-star filled" value="1"></i>
+                                                                <?php } ?>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -186,11 +215,11 @@
                                         <input type="hidden" name="rating" id="rating"></input>
                                         <input type="hidden" name="product_id" id="product_id" value="<?= $product['id'] ?>"></input>
                                         <div class="star_rating">
-                                            <span><i class="far fa-star btn_rating button1" onclick="get_rate(1)"></i></span>
-                                            <span><i class="far fa-star btn_rating button2" onclick="get_rate(2)"></i></span>
-                                            <span><i class="far fa-star btn_rating button3" onclick="get_rate(3)"></i></span>
-                                            <span><i class="far fa-star btn_rating button4" onclick="get_rate(4)"></i></span>
-                                            <span><i class="far fa-star btn_rating button5" onclick="get_rate(5)"></i></span>
+                                            <span data-value="1"><i class="far fa-star"></i></span>
+                                            <span data-value="2"><i class="far fa-star"></i></span>
+                                            <span data-value="3"><i class="far fa-star"></i></span>
+                                            <span data-value="4"><i class="far fa-star"></i></span>
+                                            <span data-value="5"><i class="far fa-star"></i></span>
                                         </div>
                                     </div>
                                     <div class="form-group col-12">
@@ -230,18 +259,14 @@
                     ?>
                         <div class="item">
                             <div class="product">
-                                <div class="product_img">
-                                    <a href="shop-product-detail.html">
-                                        <img src="<?= @$row['image'] ?>" alt="product_img1" style="width: 300px;height:300px;">
-                                    </a>
-                                    <div class="product_action_box">
-                                        <ul class="list_none pr_action_btn">
-                                            <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded cartbtn" id="cartbtn" data-product_id="<?php echo @$row['id'] ?>" data-price="<?= @$row['price'] ?>" data-quantity="1"></i> Add To Cart</a></li>
-                                            <li><a href="shop-compare.html"><i class="icon-shuffle"></i></a></li>
-                                            <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                            <li><a href="#"><i class="icon-heart wish" id="wishlist" data-product_id="<?php echo @$row['id'] ?> " data-price="<?= @$row['listedprice'] ?>" data-quantity="1"></i></a></li>
-                                        </ul>
-                                    </div>
+                                <a class="product_img" href="<?= url('Home/productdetail/' . $row['id']) ?>">
+                                    <img src="<?= $row['image'] ?>" alt="product_img1" style="width: 300px;height:300px;">
+                                </a>
+                                <div class="product-left-hover-overlay">
+                                    <ul class="left-over-buttons">
+                                        <li><a class="d-inline-flex circle align-items-center justify-content-center wish" id="wishlist" data-product_id="<?php echo @$row['id'] ?> " data-price="<?= @$row['listedprice'] ?>" data-quantity="1"><i class="far fa-heart position-absolute"></i></a></li>
+                                        <li><a class="d-inline-flex circle align-items-center justify-content-center  cartbtn" id="cartbtn" data-product_id="<?php echo @$row['id'] ?> " data-price="<?= @$row['listedprice'] ?>" data-quantity="1"><i class="icon-basket-loaded position-absolute"></i></a></li>
+                                    </ul>
                                 </div>
                                 <div class="product_info">
                                     <h6 class="product_title"><a href="shop-product-detail.html"><?= $row['name'] ?></a></h6>
@@ -253,10 +278,19 @@
                                         </div>
                                     </div>
                                     <div class="rating_wrap">
-                                        <div class="rating">
-                                            <div class="product_rate" style="width:80%"></div>
+                                        <div class="">
+                                            <div class="single_capt_right">
+                                                <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                    <?php for ($i = 1; $i <= get_review_count(@$row['id']); $i++) { ?>
+                                                        <i class="fas fa-star filled" value="1"></i>
+                                                    <?php } ?>
+                                                    <?php for ($i = 1; $i <= 5 - (int)get_review_count(@$row['id']); $i++) { ?>
+                                                        <i class="far fa-star filled" value="1"></i>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <span class="rating_num">(21)</span>
+                                        <span class="rating_num">(<?= get_review_total($row['id']) ?>)</span>
                                     </div>
                                     <div class="pr_desc">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
@@ -282,7 +316,7 @@
 <?= $this->section('scripts') ?>
 <script type="text/javascript">
     $(document).ready(function() {
-       
+
         $('.cartbtn').click(function(event) {
 
             var product_id = $(this).data("product_id");
@@ -387,26 +421,23 @@
     }
 
     function calcu() {
-        console.log("qty");
-
         var qty = $('.quantity').map(function() {
             return parseFloat(this.value);
         }).get();
     }
 
-    function get_rate(val) {
-        $(".btn_rating").removeClass("fas fa-star");
-        $(".btn_rating").addClass("far fa-star");
-        $('#rating').val(val); // set rating value in hidden input
-
-        / =========== loop for count the start and changing the color and class =========== /
-        for (let i = 1; i <= parseInt(val); i++) {
-            var button = ".button" + i;
-            $(button).removeClass("far fa-star");
-            $(button).addClass("fas fa-star");
-        }
-    }
-
+    $(document).ready(function() {
+        $('.star_rating span').on('click', function() {
+            var onStar = parseFloat($(this).data('value'), 10); // The star currently selected
+            var stars = $(this).parent().children('.star_rating span');
+            for (var i = 0; i < stars.length; i++) {
+                $(stars[i]).removeClass('selected');
+            }
+            for (i = 0; i < onStar; i++) {
+                $(stars[i]).addClass('selected');
+            }
+        });
+    });
 
     $(document).on('click', '.review_btn', function() {
 
