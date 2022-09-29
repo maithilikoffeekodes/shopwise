@@ -34,6 +34,9 @@
 					<li class="nav-item">
 						<a class="nav-sub-link" href="<?= url('admin/Home/coupon') ?>"><span class="sidemenu-label">Coupon</span></a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-sub-link" href="<?= url('admin/Home/banner') ?>"><span class="sidemenu-label">Banner</span></a>
+					</li>
 				</ul>
 			</li>
 			<li class="nav-item ">

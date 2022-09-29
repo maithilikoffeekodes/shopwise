@@ -57,6 +57,13 @@ class Home extends BaseController
         }
         return view('admin/coupon/coupon');
     }
+    public function banner()
+    {
+        if (!session('id')) {
+            return redirect()->to(url('admin/Auth/login'));
+        }
+        return view('admin/banner/banner');
+    }
     public function subscribe()
     {
         if (!session('id')) {
@@ -109,9 +116,7 @@ class Home extends BaseController
             $msg = $this->model->insert_edit_slider($post,$file);
             return $this->response->setJSON($msg);
         }
-        // if ($id != '') {
             $data = $this->model->get_master_data('slider', $id);
-        // }
         return view('admin/slider/createslider',$data);
     }
     public function createitem($id = '')
@@ -143,7 +148,20 @@ class Home extends BaseController
         $data['id'] = $id;
         return view('admin/coupon/createcoupon', $data);
     }
-   
+    public function createbanner($id = '')
+    {
+        $post = $this->request->getPost();
+        $file = $this->request->getFile('image');
+        // echo"<pre>";print_r($post);exit;
+        if (!empty($post)) {
+            $msg = $this->model->insert_edit_banner($post,$file);
+            return $this->response->setJSON($msg);
+        }
+        // if ($id != '') {
+            $data = $this->model->get_master_data('banner', $id);
+        // }
+        return view('admin/banner/createbanner',$data);
+    }
     public function order()
     {
         return view('admin/order/order');
@@ -185,6 +203,10 @@ class Home extends BaseController
         }
         if ($method == 'Coupon') {
             $data = $this->model->get_coupon_data();
+            return $data;
+        }
+        if ($method == 'banner') {
+            $data = $this->model->get_banner_data();
             return $data;
         }
         if ($method == 'subscribe') {

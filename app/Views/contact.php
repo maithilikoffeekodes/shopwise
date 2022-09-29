@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
-                    <li class="breadcrumb-item"><a href="<?= url('Home/index')?>">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?= url('Home/index') ?>">Home</a></li>
                     <!-- <li class="breadcrumb-item"><a href="#">Pages</a></li> -->
                     <li class="breadcrumb-item active">Contact</li>
                 </ol>
@@ -92,9 +92,12 @@
                             <div class="form-group col-md-12">
                                 <textarea required placeholder="Message *" id="description" class="form-control" name="message" rows="4"></textarea>
                             </div>
+                            <div class="error-msg"></div>
+                            <div class="form_proccessing"></div>
                             <div class="col-md-12">
                                 <button type="submit" title="Submit Your Message!" class="btn btn-fill-out save_data" id="save_data" name="submit" value="Submit">Send Message</button>
                             </div>
+
                             <div class="col-md-12">
                                 <div id="alert-msg" class="alert-msg text-center"></div>
                             </div>
@@ -133,6 +136,7 @@
                 if (response.st == 'success') {
                     // alert('avc');exit;
                     swal("success!", "Your data insert successfully!", "success");
+                    location.reload();
                     $('#save_data').prop('disabled', false);
                     $('.form_proccessing').html('');
                 } else {

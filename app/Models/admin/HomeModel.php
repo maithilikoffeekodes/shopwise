@@ -208,6 +208,60 @@ class HomeModel extends Model
         }
         return $msg;
     }
+    public function insert_edit_banner($post, $file)
+    {
+        //   print_r($post);exit;
+
+        $db = $this->db;
+        $builder = $db->table('banner');
+        $builder->select('*');
+        $builder->where(array('id' => $post['id']));
+        $query = $builder->get();
+        $result = $query->getRowArray();
+        //   print_r($result);exit;
+        $pdata = array(
+            'banner' => $post['banner'],
+            'link' => $post['link']
+        );
+        if (isset($file)) {
+            //  print_r($file);exit;
+            if ($file->isValid() && !$file->hasMoved()) {
+                $originalPath = '/banner/' . date('Ymd') . '/';
+                if (!file_exists(getcwd() . $originalPath)) {
+                    mkdir(getcwd() . $originalPath, 0777, true);
+                }
+                $newName = $file->getRandomName();
+                $file->move(getcwd() . $originalPath, $newName);
+                $pdata['image'] = $originalPath . $newName;
+            }
+        }
+        if (!empty($result)) {
+            $pdata['updated_at'] = date('Y-m-d H:i:s');
+            $pdata['updated_by'] = session('id');
+            // print_r($result);exit;
+            $builder->where('id', $post['id']);
+            $res = $builder->update($pdata);
+            if ($res) {
+                $msg = array('st' => 'success', 'msg' => 'Update successfully');
+            } else {
+                $msg = array('st' => 'failed');
+            }
+        } else {
+            $pdata['created_at'] = date('Y-m-d H:i:s');
+            $pdata['created_by'] = session('id');
+            if (!empty($_FILES['image']['name'])) {
+                $res = $builder->insert($pdata);
+                if ($res) {
+                    $msg = array('st' => 'success', 'msg' => 'Insert successfully');
+                } else {
+                    $msg = array('st' => 'failed');
+                }
+            } else {
+                $msg = array('st' => 'error', 'msg' => 'Please select a image');
+            }
+        }
+        return $msg;
+    }
     public function get_brand_data()
     {
         $db = $this->db;
@@ -293,6 +347,28 @@ class HomeModel extends Model
             $btnedit = '<a data-toggle="modal" data-target="#fm_model" href="' . url('admin/Home/createitem/') . $row->id . '" data-title="Edit Item : ' . $row->name . '"  class="btn btn-link pd-10"><i class="far fa-edit"></i></a> ';
 
             $btndelete = '<a data-toggle="modal" target="_blank"   title="Item name: ' . $row->name . '"  onclick="editable_remove(this)"  data-val="' . $row->id . '"  data-pk="' . $row->id . '" tabindex="-1" class="btn btn-link"><i class="far fa-trash-alt"></i></a> ';
+            return $btnedit . $btndelete;
+        }, 'last');
+
+        return $data_table->toJSON();
+    }
+    public function get_banner_data()
+    {
+        $db = $this->db;
+        $builder = $db->table('banner');
+        $builder->select('id,banner,image,link');
+        $builder->where('is_delete', 0);
+        $data_table =  DataTable::of($builder);
+        $data_table->setSearchableColumns(['id', 'banner']);
+        $data_table->edit('image', function ($row) {
+            $img_tag = '';
+            $img_tag .= '<img src=" ' . $row->image . ' " width="400px" height="200px">';
+            return $img_tag;
+        });
+        $data_table->add('action', function ($row) {
+            $btnedit = '<a data-toggle="modal" data-target="#fm_model" href="' . url('admin/Home/createbanner/') . $row->id . '" data-title="Edit Banner : ' . $row->banner . '"  class="btn btn-link pd-10"><i class="far fa-edit"></i></a> ';
+
+            $btndelete = '<a data-toggle="modal" target="_blank"   title="Banner name: ' . $row->banner . '"  onclick="editable_remove(this)"  data-val="' . $row->id . '"  data-pk="' . $row->id . '" tabindex="-1" class="btn btn-link"><i class="far fa-trash-alt"></i></a> ';
             return $btnedit . $btndelete;
         }, 'last');
 
@@ -507,6 +583,10 @@ class HomeModel extends Model
             $gmodel = new GeneralModel();
             $result['coupon'] = $gmodel->get_data_table('coupon', array('id' => $id, 'is_delete' => 0), '*');
         }
+        if ($method == 'banner') {
+            $gmodel = new GeneralModel();
+            $result['banner'] = $gmodel->get_data_table('banner', array('id' => $id, 'is_delete' => 0), '*');
+        }
         return $result;
     }
     public function UpdateData($post)
@@ -540,6 +620,11 @@ class HomeModel extends Model
 
                 $gmodel = new GeneralModel();
                 $result = $gmodel->update_data_table('coupon', array('id' => $post['pk']), array('is_delete' => '1'));
+            }
+            if ($post['method'] == 'banner') {
+
+                $gmodel = new GeneralModel();
+                $result = $gmodel->update_data_table('banner', array('id' => $post['pk']), array('is_delete' => '1'));
             }
             if ($post['method'] == 'subscribe') {
 

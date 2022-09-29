@@ -97,10 +97,10 @@
                         <li class="nav-item">
                             <a class="nav-link" id="featured-tab" data-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">Featured</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" id="special-tab" data-toggle="tab" href="#special" role="tab" aria-controls="special" aria-selected="false">Special Offer
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" id="most-views-tab" data-toggle="tab" href="#most-views" role="tab" aria-controls="most-views" aria-selected="false">Most Viewed
                             </a>
@@ -285,7 +285,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="special" role="tabpanel" aria-labelledby="special-tab">
+                    <!-- <div class="tab-pane fade" id="special" role="tabpanel" aria-labelledby="special-tab">
                         <div class="row shop_container">
                             <div class="col-lg-3 col-md-4 col-6">
                                 <div class="product">
@@ -650,7 +650,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="tab-pane fade" id="most-views" role="tabpanel" aria-labelledby="most-views-tab">
                         <div class="row shop_container">
                         <?php foreach ($most_view as $row) { ?>
@@ -726,16 +726,16 @@
                 <div class="trand_banner_text text-center text-md-left">
                     <div class="heading_s1 mb-3">
                         <span class="sub_heading">New season trends!</span>
-                        <h2>Best Summer Collection</h2>
+                        <h2><?= @$banner['banner']?></h2>
                     </div>
                     <h5 class="mb-4">Sale Get up to 50% Off</h5>
-                    <a href="<?= url('Home/shoplist') ?>" class="btn btn-fill-out rounded-0">Shop Now</a>
+                    <a href="<?= @$banner['link']?>" class="btn btn-fill-out rounded-0">Shop Now</a>
                 </div>
                 <div class="medium_divider clearfix"></div>
             </div>
             <div class="col-md-5">
                 <div class="text-center trading_img">
-                    <img src="<?= ASSETS; ?>images/tranding_img.png" alt="tranding_img" />
+                    <img src="<?= @$banner['image']?>" alt="tranding_img" />
                 </div>
             </div>
         </div>

@@ -269,8 +269,8 @@ function send_email($name, $email, $subject, $message)
         $mail->SMTPDebug = 0;
         $mail->Host         = 'smtp.gmail.com'; //smtp.google.com
         $mail->SMTPAuth     = true;
-        $mail->Username     = 'maithilijejani12@gmail.com';
-        $mail->Password     = 'bldvdjvbfqbytzvn';
+        $mail->Username     = 'maithili.koffeekodes@gmail.com';
+        $mail->Password     = 'dcklhoqklrowzyww';
         $mail->SMTPSecure   = 'tls';
         $mail->Port         = 587;
         $mail->Subject      =  $subject1;
@@ -289,9 +289,9 @@ function send_email($name, $email, $subject, $message)
         padding: 10px;
         background-color: white;
         border-radius: 10px;">
-            <h1 style=" text-align: center;">Kumo</h1>
+            // <h1 style=" text-align: center;">Shopwise</h1>
             <title>Dear '.$name.',</title>
-            <p>Thank you for choosing kumo.com . We hope you a good experience!
+            <p>Thank you for choosing Shopwise.com . We hope you a good experience!
                 we always strive to keep improving the services we offer.
                 Our highest priority is to ensure that these services meet your expectations.
             </p>
@@ -301,12 +301,12 @@ function send_email($name, $email, $subject, $message)
         ">Shop Again</button></a>
             <p>Thank for your time</p>
             <hr>
-            <p style="text-align:center ;">help@kumo.com</p>
+            <p style="text-align:center ;">help@Shopwise.com</p>
         </div>
     </div>
         </body>
         </html>';
-        $mail->setfrom('maithilijejani12@gmail.com', 'Kumo');
+        $mail->setfrom('maithili.koffeekodes@gmail.com', 'Shopwise');
 
         $mail->addAddress($email);
         $mail->isHTML(true);
@@ -324,13 +324,13 @@ function send_otp($email, $otp)
         $mail->SMTPDebug = 0;
         $mail->Host         = 'smtp.gmail.com'; //smtp.google.com
         $mail->SMTPAuth     = true;
-        $mail->Username     = 'maithilijejani12@gmail.com';
-        $mail->Password     = 'bldvdjvbfqbytzvn';
+        $mail->Username     = 'maithili.koffeekodes@gmail.com';
+        $mail->Password     = 'dcklhoqklrowzyww';
         $mail->SMTPSecure   = 'tls';
         $mail->Port         = 587;
         $mail->Subject      =  'OTP';
         $mail->Body         = 'Your One Time Password is' . ' ' . $otp;
-        $mail->setfrom('maithilijejani12@gmail.com', 'Kumo');
+        $mail->setfrom('maithili.koffeekodes@gmail.com', 'Shopwise');
 
         $mail->addAddress($email);
         $mail->isHTML(true);
@@ -348,14 +348,14 @@ function order_mail($email, $subject, $message)
         $mail->SMTPDebug = 0;
         $mail->Host         = 'smtp.gmail.com'; //smtp.google.com
         $mail->SMTPAuth     = true;
-        $mail->Username     = 'maithilijejani12@gmail.com';
-        $mail->Password     = 'bldvdjvbfqbytzvn';
+        $mail->Username     = 'maithili.koffeekodes@gmail.com';
+        $mail->Password     = 'dcklhoqklrowzyww';
         $mail->SMTPSecure   = 'tls';
         $mail->Port         =  587;
         $mail->Subject      =  $subject;
         $mail->Body         =  $message;
         // $mail->AddAttachment(getcwd().$attachment);
-        $mail->setfrom('maithilijejani12@gmail.com', 'Kumo');
+        $mail->setfrom('maithili.koffeekodes@gmail.com', 'Shopwise');
         $mail->addAddress($email);
         $mail->isHTML(true);
         $mail->send();

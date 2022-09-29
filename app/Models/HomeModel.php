@@ -183,6 +183,18 @@ class HomeModel extends Model
         // echo "<pre>";print_r($getRanditem);exit;
         return $getRandslider;
     }
+    public function get_banner_data()
+    {
+        $db = $this->db;
+        $builder = $db->table('banner');
+        $builder->select('*');
+        // $builder->orderBy('id', 'desc');
+        $builder->where('is_delete', '0');
+        $query = $builder->get();
+        $result = $query->getRowArray();
+        // echo "<pre>";print_r($getRanditem);exit;
+        return $result;
+    }
     public function get_randombrand_data()
     {
         $db = $this->db;
