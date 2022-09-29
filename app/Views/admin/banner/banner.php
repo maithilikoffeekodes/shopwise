@@ -30,7 +30,7 @@
                                     <th>Id</th>
                                     <th>Bannername</th>
                                     <th>Image</th>
-                                    <th style="">Link</th>
+                                    <th>Link</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
