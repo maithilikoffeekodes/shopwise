@@ -223,6 +223,46 @@ class HomeModel extends Model
 
         return $result;
     }
+    public function top_rated_data()
+    {
+      $db = $this->db;
+      $builder = $db->table('item i');
+      $builder->select('i.*,r.rating');
+      $builder->join('review r', 'i.id = r.product_id', 'left');
+      $builder->groupBy('i.id');
+      $builder->having('AVG(r.rating) >= 4');
+      $builder->limit(3);
+      $query = $builder->get();
+      $top_rated = $query->getResultArray();
+      return $top_rated;
+    }
+    public function latest_product_data()
+    {
+      $db = $this->db;
+      $builder = $db->table('item');
+      $builder->select('*');
+      $builder->orderBy('id', 'DESC');
+      $builder->where('is_delete', '0');
+      $builder->limit(8);
+      $query = $builder->get();
+      $latest = $query->getResultArray();
+      return $latest;
+    }
+    public function top_seller_data()
+    {
+      $db = $this->db;
+      $builder = $db->table('order_item o');
+      $builder->select('o.*,o.product_id, SUM(o.quantity) AS TotalQuantity,i.*');
+      $builder->join('item i', 'i.id = o.product_id');
+      $builder->groupBY('product_id');
+      $builder->orderBy('SUM(o.quantity)', 'DESC');
+      $builder->where('o.is_delete', '0');
+      $builder->limit(8);
+      $query = $builder->get();
+      $top_seller = $query->getResultArray();
+        // echo "<pre>";print_r($top_seller);exit;                                                                         
+      return $top_seller;
+    }
     public function insert_cart_data($post)
     {
         // echo "<pre>";print_r($post);exit;                                                                         
@@ -321,22 +361,22 @@ class HomeModel extends Model
         $data_table->add('action', function ($row) {
 
             $btnquantity = '
-            <div class="qty_class">
-            <button class="btn btn-sm btn-secondary btn-minus decrement" type="button" onclick="decrement(this)">
-            <i class="fa fa-minus"></i></button>
+            <div class="qty_class quantity">
+            <input type="button" value="-" class="minus" onclick="decrement(this)">
+            
             <span class="count">' . $row->quantity . '</span>
             <input type="hidden" class="form-control qty" name="qty[]" value="' . $row->quantity . '">
             <input type="hidden" class="form-control qty" name="cart_id[]" value="' . $row->id . '">
             <input type="text" class="form-control price_hidden d-none" name="price[]" value="' . $row->price . '">
-            <button class="btn btn-sm btn-secondary btn-plus increment" type="button" onclick="increment(this)">
-            <i class="fa fa-plus"></i></button>
+            <input type="button" value="+" class="plus" onclick="increment(this)">
+            
             </div>';
 
             return $btnquantity;
         });
 
-        $data_table->add('action', function () {
-            $btntotal = '<input type="text" class="total text-center" name="sub[]" readonly style="border:none;color:#6F6F6F;">';
+        $data_table->add('total', function () {
+            $btntotal = '<input type="text" class="total text-center" name="sub[]" readonly style="border:none;color:#6F6F6F;width:100px;">';
             return $btntotal;
         });
         $data_table->add('action', function ($row) {
@@ -466,7 +506,7 @@ class HomeModel extends Model
         // print_r($id);exit;
         $db = $this->db;
         $builder = $db->table('orders o');
-        $builder->select('o.*,o.created_at as order_date,oi.*,i.*');
+        $builder->select('o.*,o.created_at as order_date,oi.*,i.*,i.name as item');
         $builder->join('order_item oi', 'o.id = oi.order_id', 'left');
         $builder->join('item i', 'i.id = oi.product_id');
         $builder->where('o.id', $id);

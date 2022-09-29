@@ -1,10 +1,28 @@
 <?= $this->extend(THEME . 'template') ?>
 
 <?= $this->section('content') ?>
-
+<div class="breadcrumb_section bg_gray page-title-mini">
+	<div class="container">
+		<!-- STRART CONTAINER -->
+		<div class="row align-items-center">
+			<div class="col-md-6">
+				<div class="page-title">
+					<h1>Edit Address</h1>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<ol class="breadcrumb justify-content-md-end">
+					<li class="breadcrumb-item"><a href="<?= url('Home/index')?>">Home</a></li>
+					<!-- <li class="breadcrumb-item"><a href="#">Pages</a></li> -->
+					<li class="breadcrumb-item active">Edit Address</li>
+				</ol>
+			</div>
+		</div>
+	</div><!-- END CONTAINER-->
+</div>
 <section class="middle">
     <div class="container">
-        <div class="row justify-content-center justify-content-between">
+        <div class="row justify-content-center ">
             <div class="" style="width: 783px;">
                 <div class="row border shadow p-2 mb-5 bg-white rounded" id="add" data-id="address" data-module="Home">
                     <?php foreach (@$address as $row) {
@@ -36,7 +54,7 @@
 
                                 <div class="form-group" style="float:right;">
                                     <div class="sr-btn-wrap text-center">
-                                        <span class="btn btn-block btn-dark mb-3">
+                                        <span class="btn btn-fill-out btn-block mb-3">
                                             <?php if (empty($row['address_type'])) {
                                             ?>
                                                 Home
@@ -64,7 +82,7 @@
                 </div>
 
 
-                <button class="btn btn-block btn-dark mb-3" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn btn-fill-out btn-block mb-3" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     + Add New Address
                 </button>
 
@@ -179,7 +197,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <div class="checkout-btn text-right">
-                                    <button type="submit" id="address_btn" class="btn btn-block btn-dark mb-3 address_btn">Submit
+                                    <button type="submit" id="address_btn" class="btn btn-fill-out btn-block mb-3 address_btn">Submit
                                     </button>
                                 </div>
                             </div>

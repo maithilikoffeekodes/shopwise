@@ -189,21 +189,38 @@
                     date_default_timezone_set('Asia/Kolkata');
                     $today = date('Y-m-d');
                     // $today = date('2022-09-22');
-                    $delivery_date = date('Y-m-d', strtotime($date . ' + 8 days'));
-                    $pick_by_courier = date('Y-m-d', strtotime($date . ' + 2 days'));
-                    $on_the_way = date('Y-m-d', strtotime($pick_by_courier . ' + 3 days'));
-                    $ready_pickup = date('Y-m-d', strtotime($on_the_way . ' + 3 days'));
+                    $delivery_date = date('Y-m-d', strtotime($date . ' + 14 days'));
+                    $shipped = date('Y-m-d', strtotime($date . ' + 2 days'));
+                    $package_left = date('Y-m-d', strtotime($shipped . ' + 2 days'));
+                    $package_arrived = date('Y-m-d', strtotime($package_left . ' + 2 days'));
+                    $package_arrived_final = date('Y-m-d', strtotime($package_arrived . ' + 2 days'));
+                    $out_of_delivery = date('Y-m-d', strtotime($package_arrived_final . ' + 2 days'));
+                    $delivery = date('Y-m-d', strtotime($out_of_delivery . ' + 2 days'));
+
+
                     // echo $today;
                     if ($date <= $today) {
-                        if ($pick_by_courier <= $today) {
-                            if ($on_the_way <= $today) {
-                                if ($ready_pickup == $today) {
-                                    $status =  "ready pickup";
+                        if ($shipped <= $today) {
+                            if ($package_left <= $today) {
+                                if ($package_arrived <= $today) {
+                                    if ($package_arrived_final <= $today) {
+                                        if ($out_of_delivery <= $today) {
+                                            if ($delivery == $today) {
+                                                $status =  "Delivery";
+                                            } else {
+                                                $status =  "out of delivery";
+                                            }
+                                        } else {
+                                            $status =  "Package arrived at an final delivery";
+                                        }
+                                    } else {
+                                        $status =  "Package arrived at an facility";
+                                    }
                                 } else {
-                                    $status =  "on the way";
+                                    $status =  "Package has left  an facility";
                                 }
                             } else {
-                                $status = "pick by courier";
+                                $status = "shipped";
                             }
                         } else {
                             $status = "order confirmed";
@@ -221,58 +238,64 @@
             </article>
             <div class="track">
                 <?php if ($status == "order confirmed") { ?>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
-                    <div class="step "> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked by courier </span> </div>
-                    <div class="step "> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way</span> </div>
-                    <div class="step "> <span class="icon"> <i class="fas fa-box-open"></i> </span> <span class="text"> Ready for pickup </span> </div>
-                <?php } else if ($status == "pick by courier") { ?>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked by courier </span> </div>
-                    <div class="step "> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way</span> </div>
-                    <div class="step "> <span class="icon"> <i class="fas fa-box-open"></i> </span> <span class="text"> Ready for pickup </span> </div>
-                <?php } else if ($status ==  "on the way") { ?>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked by courier </span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way</span> </div>
-                    <div class="step "> <span class="icon"> <i class="fas fa-box-open"></i> </span> <span class="text"> Ready for pickup </span> </div>
-                <?php } else if ($status ==  "ready pickup") { ?>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked by courier </span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way</span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fas fa-box-open"></i> </span> <span class="text"> Ready for pickup </span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text"> Shipped </span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text"> Package has left  an facility</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text"> Package arrived at an facility</span> </div>
+                    <div class="step "> <span class="icon"> </span> <span class="text"> Package arrived at an final delivery</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text">Out of Delivery</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text"> Delivery </span> </div>
+                <?php } else if ($status == "shipped") { ?>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Shipped </span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text"> Package has left  an facility</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text"> Package arrived at an facility</span> </div>
+                    <div class="step "> <span class="icon"> </span> <span class="text"> Package arrived at an final delivery</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text">Out of Delivery</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text"> Delivery </span> </div>
+                <?php } else if ($status ==  "Package has left  an facility") { ?>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Shipped </span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Package has left  an facility</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text"> Package arrived at an facility</span> </div>
+                    <div class="step "> <span class="icon"> </span> <span class="text"> Package arrived at an final delivery</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text">Out of Delivery</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text"> Delivery </span> </div>
+                <?php } else if ($status ==  "Package arrived at an facility") { ?>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Shipped </span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Package has left  an facility</span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Package arrived at an facility</span> </div>
+                    <div class="step "> <span class="icon"> </span> <span class="text"> Package arrived at an final delivery</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text">Out of Delivery</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text"> Delivery </span> </div>
+                <?php } else if ($status ==  "Package arrived at an final delivery") { ?>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Shipped </span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Package has left  an facility</span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Package arrived at an facility</span> </div>
+                    <div class="step active"> <span class="icon"> </span> <span class="text"> Package arrived at an final delivery</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text">Out of Delivery</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text"> Delivery </span> </div>
+                <?php } else if ($status ==  "out of delivery") { ?>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Shipped </span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Package has left  an facility</span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Package arrived at an facility</span> </div>
+                    <div class="step active"> <span class="icon"> </span> <span class="text"> Package arrived at an final delivery</span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text">Out of Delivery</span> </div>
+                    <div class="step "> <span class="icon">  </span> <span class="text"> Delivery </span> </div>
+                <?php } else if ($status ==  "Delivery") { ?>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Shipped </span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Package has left  an facility</span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Package arrived at an facility</span> </div>
+                    <div class="step active"> <span class="icon"> </span> <span class="text"> Package arrived at an final delivery</span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text">Out of Delivery</span> </div>
+                    <div class="step active"> <span class="icon">  </span> <span class="text"> Delivery </span> </div>
                 <?php } ?>
             </div>
-            <!-- <div class="track">
-                <?php if (@$date == $today) { ?>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
-                    <div class="step "> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked by courier </span> </div>
-                    <div class="step "> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way</span> </div>
-                    <div class="step "> <span class="icon"> <i class="fas fa-box-open"></i> </span> <span class="text"> Ready for pickup </span> </div>
-                <?php
-                } else if (@$pick_by_courier == $today) { ?>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"><?php echo "Picked by courier"; ?> </span> </div>
-                    <div class="step "> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way</span> </div>
-                    <div class="step "> <span class="icon"> <i class="fas fa-box-open"></i> </span> <span class="text"> Ready for pickup </span> </div>
-
-                <?php  } else if (@$on_the_way == $today) { ?>
-
-                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"><?php echo "Picked by courier"; ?> </span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"><?php echo "On the way"; ?></span> </div>
-                    <div class="step "> <span class="icon"> <i class="fas fa-box-open"></i> </span> <span class="text"><?php echo "Ready for pickup"; ?> </span> </div>
-                <?php } else if (@$ready_pickup == $today) { ?>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"><?php echo "Picked by courier"; ?> </span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"><?php echo "On the way"; ?></span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fas fa-box-open"></i> </span> <span class="text"><?php echo "Ready for pickup"; ?> </span> </div>
-                <?php } else { ?>
-                    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"><?php echo " Order confirmed"; ?> </span> </div>
-                    <div class="step"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"><?php echo "Picked by courier"; ?> </span> </div>
-                    <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"><?php echo "On the way"; ?></span> </div>
-                    <div class="step"> <span class="icon"> <i class="fas fa-box-open"></i> </span> <span class="text"><?php echo "Ready for pickup"; ?> </span> </div>
-                <?php } ?>
-            </div> -->
+            
             <hr>
 
             <a href="<?= url('Home/orderview/' . @$track_order['id']) ?>" class="btn btn-fill-out btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>

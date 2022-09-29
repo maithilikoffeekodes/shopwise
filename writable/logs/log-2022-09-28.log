@@ -81,3 +81,127 @@ in APPPATH\Models\HomeModel.php on line 1031.
  6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
  8 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-28 06:13:41 --> Unknown column 'o.is_delete' in 'where clause'
+CRITICAL - 2022-09-28 06:13:41 --> Unknown column 'o.is_delete' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`user_id` = \'06ee84394bafca6ff804\'
+AND `o`.`is_delete` = \'0\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`user_id` = \'06ee84394bafca6ff804\'
+AND `o`.`is_delete` = \'0\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`user_id` = \'06ee84394bafca6ff804\'
+AND `o`.`is_delete` = \'0\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1669): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`user_id` = :o.user_id:
+AND `o`.`is_delete` = :o.is_delete:', [...], false)
+ 5 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTableQuery.php(53): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTable.php(174): Hermawan\DataTables\DataTableQuery->countAll()
+ 7 APPPATH\Models\admin\HomeModel.php(359): Hermawan\DataTables\DataTable->toJson()
+ 8 APPPATH\Controllers\admin\Home.php(183): App\Models\admin\HomeModel->get_order_data()
+ 9 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\admin\Home->Getdata('order')
+10 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\Home))
+11 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-28 06:14:01 --> Unknown column 'o.is_delete' in 'where clause'
+CRITICAL - 2022-09-28 06:14:01 --> Unknown column 'o.is_delete' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`user_id` = \'06ee84394bafca6ff804\'
+AND `o`.`is_delete` = \'0\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`user_id` = \'06ee84394bafca6ff804\'
+AND `o`.`is_delete` = \'0\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`user_id` = \'06ee84394bafca6ff804\'
+AND `o`.`is_delete` = \'0\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1669): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`user_id` = :o.user_id:
+AND `o`.`is_delete` = :o.is_delete:', [...], false)
+ 5 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTableQuery.php(53): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTable.php(174): Hermawan\DataTables\DataTableQuery->countAll()
+ 7 APPPATH\Models\admin\HomeModel.php(359): Hermawan\DataTables\DataTable->toJson()
+ 8 APPPATH\Controllers\admin\Home.php(183): App\Models\admin\HomeModel->get_order_data()
+ 9 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\admin\Home->Getdata('order')
+10 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\Home))
+11 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-28 06:14:19 --> Unknown column 'o.is_delete' in 'where clause'
+CRITICAL - 2022-09-28 06:14:19 --> Unknown column 'o.is_delete' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`user_id` = \'06ee84394bafca6ff804\'
+AND `o`.`is_delete` = \'0\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`user_id` = \'06ee84394bafca6ff804\'
+AND `o`.`is_delete` = \'0\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`user_id` = \'06ee84394bafca6ff804\'
+AND `o`.`is_delete` = \'0\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1669): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`user_id` = :o.user_id:
+AND `o`.`is_delete` = :o.is_delete:', [...], false)
+ 5 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTableQuery.php(53): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTable.php(174): Hermawan\DataTables\DataTableQuery->countAll()
+ 7 APPPATH\Models\admin\HomeModel.php(359): Hermawan\DataTables\DataTable->toJson()
+ 8 APPPATH\Controllers\admin\Home.php(183): App\Models\admin\HomeModel->get_order_data()
+ 9 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\admin\Home->Getdata('order')
+10 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\Home))
+11 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-28 06:15:38 --> Unknown column 'o.is_delete' in 'where clause'
+CRITICAL - 2022-09-28 06:15:38 --> Unknown column 'o.is_delete' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`is_delete` = 0', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`is_delete` = 0')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`is_delete` = 0')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1669): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `orders` `o`
+JOIN `user` `u` ON `u`.`id` = `o`.`user_id`
+WHERE `o`.`is_delete` = :o.is_delete:', [...], false)
+ 5 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTableQuery.php(53): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 VENDORPATH\hermawan\codeigniter4-datatables\src\DataTable.php(174): Hermawan\DataTables\DataTableQuery->countAll()
+ 7 APPPATH\Models\admin\HomeModel.php(359): Hermawan\DataTables\DataTable->toJson()
+ 8 APPPATH\Controllers\admin\Home.php(183): App\Models\admin\HomeModel->get_order_data()
+ 9 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\admin\Home->Getdata('order')
+10 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\Home))
+11 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')

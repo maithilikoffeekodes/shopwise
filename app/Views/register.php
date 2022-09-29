@@ -43,7 +43,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label>MobileNo <span class="text-danger"> * </span></label>
-                                <input type="number" class="form-control" placeholder="Enter MolbileNo" name="mobileno" id="inputName" value="<?= @$data['mobileno']; ?>" required>
+                                <input type="number" class="form-control" placeholder="Enter MobileNo" name="mobileno" id="inputName" maxlength="10" value="<?= @$data['mobileno']; ?>" onkeypress="return isNumberKey(event)" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -69,7 +69,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Pincode<span class="text-danger"> * </span></label>
-                                <input class="form-control" placeholder="Enter your pincode" type="text" id="inputName" name="pincode" value="<?= @$data['pincode']; ?>" required>
+                                <input class="form-control" placeholder="Enter your pincode" type="text" id="inputName" name="pincode" maxlength="6" value="<?= @$data['pincode']; ?>" onkeypress="return isNumberKey(event)" required>
                             </div>
                         </div>
 
@@ -260,6 +260,12 @@
             $("#len").html("&nbsp;Minimum 6 characters");
             $("#len").show();
         }
+    }
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
     }
 </script>
 <?= $this->endSection() ?>

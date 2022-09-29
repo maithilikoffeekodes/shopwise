@@ -1,0 +1,38 @@
+ERROR - 2022-09-29 00:14:06 --> Column 'is_delete' in where clause is ambiguous
+CRITICAL - 2022-09-29 00:14:06 --> Column 'is_delete' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `o`.*, `o`.`product_id`, SUM(o.quantity) AS TotalQuantity, `i`.*
+FROM `order_item` `o`
+JOIN `item` `i` ON `i`.`id` = `o`.`product_id`
+WHERE `is_delete` = \'0\'
+GROUP BY `product_id`
+ORDER BY SUM(quantity) DESC
+ LIMIT 8', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `o`.*, `o`.`product_id`, SUM(o.quantity) AS TotalQuantity, `i`.*
+FROM `order_item` `o`
+JOIN `item` `i` ON `i`.`id` = `o`.`product_id`
+WHERE `is_delete` = \'0\'
+GROUP BY `product_id`
+ORDER BY SUM(quantity) DESC
+ LIMIT 8')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `o`.*, `o`.`product_id`, SUM(o.quantity) AS TotalQuantity, `i`.*
+FROM `order_item` `o`
+JOIN `item` `i` ON `i`.`id` = `o`.`product_id`
+WHERE `is_delete` = \'0\'
+GROUP BY `product_id`
+ORDER BY SUM(quantity) DESC
+ LIMIT 8')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `o`.*, `o`.`product_id`, SUM(o.quantity) AS TotalQuantity, `i`.*
+FROM `order_item` `o`
+JOIN `item` `i` ON `i`.`id` = `o`.`product_id`
+WHERE `is_delete` = :is_delete:
+GROUP BY `product_id`
+ORDER BY SUM(quantity) DESC
+ LIMIT 8', [...], false)
+ 5 APPPATH\Models\HomeModel.php(261): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Home.php(26): App\Models\HomeModel->top_seller_data()
+ 7 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')

@@ -11,7 +11,7 @@
            
         </td>
     </tr>
-
+<?php //echo"<pre>";print_r($order);exit;?>
     <tr>
         <td class="text" colspan="4" width="" style="text-align:left;border:none;"><b>Sold By :-</b>
             <br> Shopwise Pvt.Ltd.

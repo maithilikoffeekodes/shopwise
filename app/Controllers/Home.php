@@ -21,6 +21,9 @@ class Home extends BaseController
         $data['rand_brand'] = $this->model->get_randombrand_data();
         $data['rand_category'] = $this->model->get_randomcategory_data();
         $data['review'] = $this->model->get_randomreview_data();
+        $data['top_rated'] = $this->model->top_rated_data();
+        $data['latest_product'] = $this->model->latest_product_data();
+        $data['top_seller'] = $this->model->top_seller_data();
 
         if (!session('guestid') && !session('uid')) {
             $guestid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
@@ -283,6 +286,7 @@ class Home extends BaseController
         $dompdf = new Dompdf();
         $data['order'] = $this->model->get_orders_details($id);
         $html =  view('invoice', $data);
+        // print_r($html);exit;
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A3', 'portrait');
         $dompdf->render();

@@ -1,6 +1,6 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="<?= url('Home/index')?>">
             <img class="logo_light" src="<?= ASSETS; ?>images/logo_light.png" alt="logo" />
             <img class="logo_dark" src="<?= ASSETS; ?>images/logo_dark.png" alt="logo" />
         </a>
@@ -272,7 +272,7 @@
                 </div> -->
             </li>
             <li class="dropdown">
-                <a class=" nav-link" href="<?= url('Home/login') ?>"><i class="fa fa-user"></i></a>
+                <a class=" nav-link" ><i class="fa fa-user"></i></a>
                 <div class="dropdown-menu">
                     <ul>
                         <?php if (empty(session('uid'))) { ?>
@@ -281,6 +281,7 @@
                         <?php } else { ?>
                             <li><a class="dropdown-item nav-link nav_item" href="<?= url('Home/order') ?>">Your Order</a></li>
                             <li><a class="dropdown-item nav-link nav_item" href="<?= url('Home/register') ?>">Edit Profile</a></li>
+                            <li><a class="dropdown-item nav-link nav_item" href="<?= url('Home/address') ?>">Edit Address</a></li>
                             <li><a class="dropdown-item nav-link nav_item" href="<?= url('Home/change_password') ?>">Change Password</a></li>
                             <li><a class="dropdown-item nav-link nav_item" href="<?= url('Home/logout') ?>">Logout</a></li>
                         <?php } ?>

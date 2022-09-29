@@ -114,7 +114,7 @@
                         <div class="cart-product-quantity">
                             <div class="quantity">
                                 <input type="button" value="-" class="minus" onclick="decrement(this)">
-                                <input type="text" name="qty" value="1" title="Qty" class="quantity qty text-center" min="1" max="10" style="width:43px ;" size="4">
+                                <input type="text" name="qty" value="1" title="Qty" class=" qty text-center" min="1" max="10" style="width:43px ;" size="4">
                                 <input type="button" value="+" class="plus" onclick="increment(this)">
                             </div>
                         </div>
@@ -398,7 +398,6 @@
     function increment(val) {
         var qty = $(val).closest('.quantity').find('input[name="qty"]').val();
         qty++;
-        console.log(qty);
 
         parseFloat($('.quantity').val(qty))
         $(val).closest('.quantity').find('.count').text(qty);

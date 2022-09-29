@@ -53,7 +53,7 @@
             </div>
             <div class="col-md-6">
                 <div class="newsletter_form">
-                    <form>
+                    <form method="post">
                         <input type="text" required="" name="email" id="email" class="form-control rounded-0" placeholder="Enter Email Address">
                         <button type="submit" class="btn btn-dark rounded-0" onclick="subscrib()" name="submit" value="Submit">Subscribe</button>
                     </form>

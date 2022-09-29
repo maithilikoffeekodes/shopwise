@@ -86,7 +86,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <!-- <div class="tab-style1">
+                <div class="tab-style1">
                     <ul class="nav nav-tabs justify-content-center" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="arrival-tab" data-toggle="tab" href="#arrival" role="tab" aria-controls="arrival" aria-selected="true">New Arrival</a>
@@ -102,11 +102,11 @@
                             </a>
                         </li>
                     </ul>
-                </div> -->
+                </div>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="arrival" role="tabpanel" aria-labelledby="arrival-tab">
                         <div class="row shop_container">
-                            <?php foreach ($rand_item as $row) { ?>
+                            <?php foreach ($latest_product as $row) { ?>
                                 <div class="col-lg-3 col-md-4 col-6">
                                     <a href="<?= url('Home/productdetail/' . $row['id']) ?>">
                                         <div class="product">

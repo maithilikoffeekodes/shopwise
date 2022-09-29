@@ -348,8 +348,6 @@ class HomeModel extends Model
         $builder = $db->table('orders o');
         $builder->select('o.id,u.name,o.created_at,o.total_payment,o.transaction_id,o.payment_type,o.transaction_status');
         $builder->join('user u', 'u.id = o.user_id');
-        $builder->where('user_id', session('uid') ? session('uid') : session('guestid'));
-        // $builder->where('o.is_delete', '0');
         $data_table = DataTable::of($builder);
         $data_table->setSearchableColumns(['id']);
         $data_table->add('action', function ($row) {
