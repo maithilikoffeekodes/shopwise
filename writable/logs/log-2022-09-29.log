@@ -36,3 +36,277 @@ ORDER BY SUM(quantity) DESC
  9 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 10 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
 11 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-29 00:34:14 --> Unknown column 'i.id' in 'on clause'
+CRITICAL - 2022-09-29 00:34:14 --> Unknown column 'i.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT *
+FROM `item`
+LEFT JOIN `review` `r` ON `i`.`id` = `r`.`product_id`
+GROUP BY `i`.`id`
+HAVING AVG(r.rating) >= \'4\'
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT *
+FROM `item`
+LEFT JOIN `review` `r` ON `i`.`id` = `r`.`product_id`
+GROUP BY `i`.`id`
+HAVING AVG(r.rating) >= \'4\'
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT *
+FROM `item`
+LEFT JOIN `review` `r` ON `i`.`id` = `r`.`product_id`
+GROUP BY `i`.`id`
+HAVING AVG(r.rating) >= \'4\'
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1669): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT *
+FROM `item`
+LEFT JOIN `review` `r` ON `i`.`id` = `r`.`product_id`
+GROUP BY `i`.`id`
+HAVING AVG(r.rating) >= :AVG(r.rating):
+) CI_count_all_results', [...], false)
+ 5 APPPATH\Models\HomeModel.php(931): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 APPPATH\Controllers\Home.php(261): App\Models\HomeModel->fetch_data([...], '1')
+ 7 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->fetch_data('1')
+ 8 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-29 00:36:07 --> Duplicate column name 'id'
+CRITICAL - 2022-09-29 00:36:07 --> Duplicate column name 'id'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT *
+FROM `item`
+LEFT JOIN `review` `r` ON `item`.`id` = `r`.`product_id`
+GROUP BY `item`.`id`
+HAVING AVG(r.rating) >= 4
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT *
+FROM `item`
+LEFT JOIN `review` `r` ON `item`.`id` = `r`.`product_id`
+GROUP BY `item`.`id`
+HAVING AVG(r.rating) >= 4
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT *
+FROM `item`
+LEFT JOIN `review` `r` ON `item`.`id` = `r`.`product_id`
+GROUP BY `item`.`id`
+HAVING AVG(r.rating) >= 4
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1669): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT *
+FROM `item`
+LEFT JOIN `review` `r` ON `item`.`id` = `r`.`product_id`
+GROUP BY `item`.`id`
+HAVING AVG(r.rating) >= 4
+) CI_count_all_results', [], false)
+ 5 APPPATH\Models\HomeModel.php(931): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 APPPATH\Controllers\Home.php(261): App\Models\HomeModel->fetch_data([...], '1')
+ 7 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->fetch_data('1')
+ 8 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-29 00:36:59 --> Duplicate column name 'id'
+CRITICAL - 2022-09-29 00:36:59 --> Duplicate column name 'id'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT *
+FROM `item`
+LEFT JOIN `review` ON `item`.`id` = `review`.`product_id`
+GROUP BY `item`.`id`
+HAVING AVG(review.rating) >= 4
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT *
+FROM `item`
+LEFT JOIN `review` ON `item`.`id` = `review`.`product_id`
+GROUP BY `item`.`id`
+HAVING AVG(review.rating) >= 4
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT *
+FROM `item`
+LEFT JOIN `review` ON `item`.`id` = `review`.`product_id`
+GROUP BY `item`.`id`
+HAVING AVG(review.rating) >= 4
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1669): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT *
+FROM `item`
+LEFT JOIN `review` ON `item`.`id` = `review`.`product_id`
+GROUP BY `item`.`id`
+HAVING AVG(review.rating) >= 4
+) CI_count_all_results', [], false)
+ 5 APPPATH\Models\HomeModel.php(931): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 APPPATH\Controllers\Home.php(261): App\Models\HomeModel->fetch_data([...], '1')
+ 7 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->fetch_data('1')
+ 8 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-29 00:41:31 --> Table 'shopwise.reviewr' doesn't exist
+CRITICAL - 2022-09-29 00:41:31 --> Table 'shopwise.reviewr' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `i`.*
+FROM `item` `i`
+LEFT JOIN `reviewr` ON `i`.`id` = `r`.`product_id`
+GROUP BY `i`.`id`
+HAVING AVG(r.rating) >= 4
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `i`.*
+FROM `item` `i`
+LEFT JOIN `reviewr` ON `i`.`id` = `r`.`product_id`
+GROUP BY `i`.`id`
+HAVING AVG(r.rating) >= 4
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `i`.*
+FROM `item` `i`
+LEFT JOIN `reviewr` ON `i`.`id` = `r`.`product_id`
+GROUP BY `i`.`id`
+HAVING AVG(r.rating) >= 4
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1669): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `i`.*
+FROM `item` `i`
+LEFT JOIN `reviewr` ON `i`.`id` = `r`.`product_id`
+GROUP BY `i`.`id`
+HAVING AVG(r.rating) >= 4
+) CI_count_all_results', [], false)
+ 5 APPPATH\Models\HomeModel.php(931): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 APPPATH\Controllers\Home.php(261): App\Models\HomeModel->fetch_data([...], '1')
+ 7 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->fetch_data('1')
+ 8 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-29 04:51:31 --> Argument 1 passed to CodeIgniter\Database\BaseBuilder::update() must be of the type array or null, object given, called in C:\maithili\shopwise\app\Models\HomeModel.php on line 289
+in SYSTEMPATH\Database\BaseBuilder.php on line 2019.
+ 1 APPPATH\Models\HomeModel.php(289): CodeIgniter\Database\BaseBuilder->update(Object(CodeIgniter\Database\MySQLi\Builder))
+ 2 APPPATH\Controllers\Home.php(133): App\Models\HomeModel->get_mostviewed_data('24')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('24')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-29 05:00:21 --> Undefined index: views
+in APPPATH\Models\HomeModel.php on line 294.
+ 1 APPPATH\Models\HomeModel.php(294): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: views', 'APPPATH\\Models\\HomeModel.php', 294, [...])
+ 2 APPPATH\Controllers\Home.php(133): App\Models\HomeModel->get_mostviewed_data('25')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('25')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-29 05:01:20 --> Argument 1 passed to CodeIgniter\Database\BaseBuilder::update() must be of the type array or null, string given, called in C:\maithili\shopwise\app\Models\HomeModel.php on line 294
+in SYSTEMPATH\Database\BaseBuilder.php on line 2019.
+ 1 APPPATH\Models\HomeModel.php(294): CodeIgniter\Database\BaseBuilder->update('views')
+ 2 APPPATH\Controllers\Home.php(133): App\Models\HomeModel->get_mostviewed_data('25')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('25')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-29 05:05:23 --> Undefined index: views
+in APPPATH\Models\HomeModel.php on line 292.
+ 1 APPPATH\Models\HomeModel.php(292): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: views', 'APPPATH\\Models\\HomeModel.php', 292, [...])
+ 2 APPPATH\Controllers\Home.php(133): App\Models\HomeModel->get_mostviewed_data('25')
+ 3 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('25')
+ 4 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-29 05:20:02 --> Argument 2 passed to view() must be of the type array, bool given, called in C:\maithili\shopwise\app\Controllers\Home.php on line 135
+in SYSTEMPATH\Common.php on line 1121.
+ 1 APPPATH\Controllers\Home.php(135): view('productdetail', true)
+ 2 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('24')
+ 3 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-29 05:20:06 --> Too few arguments to function App\Models\HomeModel::get_mostviewed_data(), 0 passed in C:\maithili\shopwise\app\Controllers\Home.php on line 28 and exactly 1 expected
+in APPPATH\Models\HomeModel.php on line 302.
+ 1 APPPATH\Controllers\Home.php(28): App\Models\HomeModel->get_mostviewed_data()
+ 2 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-09-29 05:20:20 --> Unknown column 'o.is_delete' in 'where clause'
+CRITICAL - 2022-09-29 05:20:20 --> Unknown column 'o.is_delete' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `p`.*, `p`.`product_id`, MAX(p.views) AS most_views, `i`.*
+FROM `pages_views` `p`
+JOIN `item` `i` ON `i`.`id` = `p`.`product_id`
+WHERE `o`.`is_delete` = \'0\'
+GROUP BY `product_id`
+ORDER BY MAX(p.views) DESC
+ LIMIT 8', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `p`.*, `p`.`product_id`, MAX(p.views) AS most_views, `i`.*
+FROM `pages_views` `p`
+JOIN `item` `i` ON `i`.`id` = `p`.`product_id`
+WHERE `o`.`is_delete` = \'0\'
+GROUP BY `product_id`
+ORDER BY MAX(p.views) DESC
+ LIMIT 8')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `p`.*, `p`.`product_id`, MAX(p.views) AS most_views, `i`.*
+FROM `pages_views` `p`
+JOIN `item` `i` ON `i`.`id` = `p`.`product_id`
+WHERE `o`.`is_delete` = \'0\'
+GROUP BY `product_id`
+ORDER BY MAX(p.views) DESC
+ LIMIT 8')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `p`.*, `p`.`product_id`, MAX(p.views) AS most_views, `i`.*
+FROM `pages_views` `p`
+JOIN `item` `i` ON `i`.`id` = `p`.`product_id`
+WHERE `o`.`is_delete` = :o.is_delete:
+GROUP BY `product_id`
+ORDER BY MAX(p.views) DESC
+ LIMIT 8', [...], false)
+ 5 APPPATH\Models\HomeModel.php(313): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Home.php(28): App\Models\HomeModel->get_mostviewed_data()
+ 7 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-29 05:24:25 --> Argument 2 passed to view() must be of the type array, bool given, called in C:\maithili\shopwise\app\Controllers\Home.php on line 135
+in SYSTEMPATH\Common.php on line 1121.
+ 1 APPPATH\Controllers\Home.php(135): view('productdetail', true)
+ 2 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('24')
+ 3 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-09-29 05:26:43 --> Argument 2 passed to view() must be of the type array, bool given, called in C:\maithili\shopwise\app\Controllers\Home.php on line 135
+in SYSTEMPATH\Common.php on line 1121.
+ 1 APPPATH\Controllers\Home.php(135): view('productdetail', true)
+ 2 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Home->productdetail('16')
+ 3 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')

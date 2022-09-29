@@ -222,7 +222,6 @@ function get_review_total($id)
     $db = \Config\Database::connect();
     $builder = $db->table('review');
     $builder->select('SUM(`rating`) as ratesum');
-
     $builder->where('product_id', $id);
     $builder->where('is_delete', 0);
     $query = $builder->get();

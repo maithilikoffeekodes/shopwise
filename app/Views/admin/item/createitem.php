@@ -79,19 +79,27 @@
             </div>
             <div class="form-group">
                 <label class="form-label">Igst<span class="tx-danger">*</span></label>
-                <input class="form-control"  type="number" maxlength="2" name="igst" value="<?= @$item['igst'] ?>" placeholder="Enter GST in %" required>
+                <input class="form-control" type="number" maxlength="2" name="igst" value="<?= @$item['igst'] ?>" placeholder="Enter GST in %" required>
             </div>
             <div class="form-group">
                 <label class="form-label">Cgst<span class="tx-danger">*</span></label>
-                <input class="form-control"  type="number" name="cgst" maxlength="1" value="<?= @$item['cgst'] ?>" placeholder=" %" required>
+                <input class="form-control" type="number" name="cgst" maxlength="1" value="<?= @$item['cgst'] ?>" placeholder=" %" required>
             </div>
             <div class="form-group">
                 <label class="form-label">Sgst<span class="tx-danger">*</span></label>
-                <input class="form-control"  type="number" name="sgst" maxlength="1" value="<?= @$item['sgst'] ?>" placeholder=" %" required>
+                <input class="form-control" type="number" name="sgst" maxlength="1" value="<?= @$item['sgst'] ?>" placeholder=" %" required>
             </div>
             <div class="form-group">
                 <label class="form-label">Stock<span class="tx-danger">*</span></label>
                 <input type="text" name="stock" class="form-control" value="<?= @$item['stock']; ?>" placeholder="Enter stock" required>
+            </div>
+            <div class="form-group">
+            <label class="form-label">Featured<span class="tx-danger">*</span></label>
+                <select class="form-control select2" name="featured" id="featured">
+                    <option value="">None</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
             </div>
         </div>
     </div>
@@ -323,6 +331,10 @@
                 },
                 cache: true
             }
+        });
+        $('#featured').select2({
+            placeholder: 'Choose one',
+            width: '100%'
         });
     });
 

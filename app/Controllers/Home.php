@@ -24,6 +24,8 @@ class Home extends BaseController
         $data['top_rated'] = $this->model->top_rated_data();
         $data['latest_product'] = $this->model->latest_product_data();
         $data['top_seller'] = $this->model->top_seller_data();
+        $data['featured_product'] = $this->model->featured_data();
+        $data['most_view'] = $this->model->get_mostviewed_data();
 
         if (!session('guestid') && !session('uid')) {
             $guestid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
@@ -128,6 +130,7 @@ class Home extends BaseController
         // echo"<pre>";print_r($data['product']['category']);exit;
         $data['related_product'] = $this->model->get_related_product_data($data['product']['category']);
         $data['review'] = $this->model->get_review($id);
+        $data['most-view'] = $this->model->insert_mostviewed_data($id);
 
         return view('productdetail', $data);
     }

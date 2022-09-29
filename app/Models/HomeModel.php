@@ -225,43 +225,96 @@ class HomeModel extends Model
     }
     public function top_rated_data()
     {
-      $db = $this->db;
-      $builder = $db->table('item i');
-      $builder->select('i.*,r.rating');
-      $builder->join('review r', 'i.id = r.product_id', 'left');
-      $builder->groupBy('i.id');
-      $builder->having('AVG(r.rating) >= 4');
-      $builder->limit(3);
-      $query = $builder->get();
-      $top_rated = $query->getResultArray();
-      return $top_rated;
+        $db = $this->db;
+        $builder = $db->table('item i');
+        $builder->select('i.*,r.rating');
+        $builder->join('review r', 'i.id = r.product_id', 'left');
+        $builder->groupBy('i.id');
+        $builder->having('AVG(r.rating) >= 4');
+        $builder->limit(3);
+        $query = $builder->get();
+        $top_rated = $query->getResultArray();
+        return $top_rated;
     }
     public function latest_product_data()
     {
-      $db = $this->db;
-      $builder = $db->table('item');
-      $builder->select('*');
-      $builder->orderBy('id', 'DESC');
-      $builder->where('is_delete', '0');
-      $builder->limit(8);
-      $query = $builder->get();
-      $latest = $query->getResultArray();
-      return $latest;
+        $db = $this->db;
+        $builder = $db->table('item');
+        $builder->select('*');
+        $builder->orderBy('created_at', 'DESC');
+        $builder->where('is_delete', '0');
+        $builder->limit(8);
+        $query = $builder->get();
+        $latest = $query->getResultArray();
+        return $latest;
     }
     public function top_seller_data()
     {
-      $db = $this->db;
-      $builder = $db->table('order_item o');
-      $builder->select('o.*,o.product_id, SUM(o.quantity) AS TotalQuantity,i.*');
-      $builder->join('item i', 'i.id = o.product_id');
-      $builder->groupBY('product_id');
-      $builder->orderBy('SUM(o.quantity)', 'DESC');
-      $builder->where('o.is_delete', '0');
-      $builder->limit(8);
-      $query = $builder->get();
-      $top_seller = $query->getResultArray();
-        // echo "<pre>";print_r($top_seller);exit;                                                                         
-      return $top_seller;
+        $db = $this->db;
+        $builder = $db->table('order_item o');
+        $builder->select('o.*,o.product_id, SUM(o.quantity) AS TotalQuantity,i.*');
+        $builder->join('item i', 'i.id = o.product_id');
+        $builder->groupBY('product_id');
+        $builder->orderBy('SUM(o.quantity)', 'DESC');
+        $builder->where('o.is_delete', '0');
+        $builder->limit(8);
+        $query = $builder->get();
+        $top_seller = $query->getResultArray();
+        return $top_seller;
+    }
+    public function featured_data()
+    {
+        $db = $this->db;
+        $builder = $db->table('item');
+        $builder->select('*');
+        $builder->orderBy('id', 'DESC');
+        $builder->where(array('is_featured' => '1', 'is_delete' => '0'));
+        $builder->limit(8);
+        $query = $builder->get();
+        $feature = $query->getResultArray();
+        return $feature;
+    }
+    public function insert_mostviewed_data($id)
+    {
+
+        $db = $this->db;
+        $builder = $db->table('pages_views');
+        $builder->select('*');
+        $builder->where('product_id', $id);
+        $query = $builder->get();
+        $result = $query->getRowArray();
+        // echo "<pre>";print_r($result);exit;      
+        $data = array(
+            'product_id' => $id,
+            'views' => '1'
+        );
+        if (!empty($result)) {
+            $views = $result['views'] + 1;
+            $data1 = ['views' => $views];
+            $builder->where('product_id', $id);
+            $res = $builder->update($data1);
+        } else {
+            $res = $builder->insert($data);
+        }
+
+        return $res;
+    }
+    public function get_mostviewed_data()
+    {
+
+        $db = $this->db;
+        $builder = $db->table('item i');
+        $builder->select('i.*, MAX(p.views) AS most_views,p.*');
+        $builder->join('pages_views p', 'i.id = p.product_id');
+        $builder->groupBY('product_id');
+        $builder->orderBy('MAX(p.views)', 'DESC');
+        $builder->where('i.is_delete', '0');
+        $builder->limit(8);
+        $query = $builder->get();
+        $most_views = $query->getResultArray();
+        // echo "<pre>";print_r($most_views);exit;                                                                         
+
+        return $most_views;
     }
     public function insert_cart_data($post)
     {
@@ -883,8 +936,8 @@ class HomeModel extends Model
         // print_r($post);
         // exit;
         $db = $this->db;
-        $builder = $db->table('item');
-        $builder->select('*');
+        $builder = $db->table('item i');
+        $builder->select('i.*');
 
         $minvalue = $post['min_price'];
         $maxvalue = $post['max_price'];
@@ -894,72 +947,80 @@ class HomeModel extends Model
 
 
         if (!empty($minvalue || $maxvalue)) {
-            $builder->where('is_delete', 0);
-            $builder->where("price BETWEEN '$minvalue' AND '$maxvalue'");
+            $builder->where('i.is_delete', 0);
+            $builder->where("listedprice BETWEEN '$minvalue' AND '$maxvalue'");
         }
         if (!empty($post['brand_id'])) {
-            $builder->where('brand', $post['brand_id']);
+            $builder->where('i.brand', $post['brand_id']);
         }
         if (!empty($post['category_id'])) {
-            $builder->where('category', $post['category_id']);
+            $builder->where('i.category', $post['category_id']);
         }
         if (!empty($post['cat'])) {
-            $builder->where('category', $post['cat']);
+            $builder->where('i.category', $post['cat']);
         }
         if (!empty($post['brand'])) {
-            $builder->where('brand', $post['brand']);
+            $builder->where('i.brand', $post['brand']);
         }
         if (!empty($post['search'])) {
-            $builder->like('brand', $post['search'], 'both');
-            $builder->orLike('category', $post['search'], 'both');
-            $builder->orLike('name', $post['search'], 'both');
+            $builder->like('i.brand', $post['search'], 'both');
+            $builder->orLike('i.category', $post['search'], 'both');
+            $builder->orLike('i.name', $post['search'], 'both');
         }
         if (empty($post['price'])) {
             $builder->where('is_delete', 0);
         } elseif (!empty($post['price'] == '1')) {
-            $builder->orderBy('created_at', 'desc');
+            $builder->orderBy('i.created_at', 'desc');
         } elseif (!empty($post['price'] == '2')) {
-            $builder->orderBy('price', 'asc');
+            $builder->orderBy('i.listedprice', 'asc');
         } elseif (!empty($post['price'] == '3')) {
-            $builder->orderBy('price', 'desc');
+            $builder->orderBy('i.listedprice', 'desc');
+        } elseif (!empty($post['price'] == '4')) {
+            $builder->join('review r', 'i.id = r.product_id', 'left');
+            $builder->groupBy('i.id');
+            $builder->orderBy('AVG(r.rating)', 'DESC');
         }
 
         $number_of_result = $builder->countAllResults();
         $number_of_page = ceil($number_of_result / $results_per_page);
         //    print_r( $number_of_page);exit;
-        $builder->select('*');
+        $builder->select('i.*');
 
 
         if (!empty($minvalue || $maxvalue)) {
-            $builder->where('is_delete', 0);
-            $builder->where("price BETWEEN '$minvalue' AND '$maxvalue'");
+            $builder->where('i.is_delete', 0);
+            $builder->where("listedprice BETWEEN '$minvalue' AND '$maxvalue'");
         }
 
         if (!empty($post['brand_id'])) {
-            $builder->where('brand', $post['brand_id']);
+            $builder->where('i.brand', $post['brand_id']);
         }
         if (!empty($post['category_id'])) {
-            $builder->where('category', $post['category_id']);
+            $builder->where('i.category', $post['category_id']);
         }
         if (!empty($post['cat'])) {
-            $builder->where('category', $post['cat']);
+            $builder->where('i.category', $post['cat']);
         }
         if (!empty($post['brand'])) {
-            $builder->where('brand', $post['brand']);
+            $builder->where('i.brand', $post['brand']);
         }
         if (!empty($post['search'])) {
-            $builder->like('brand', $post['search'], 'both');
-            $builder->orLike('category', $post['search'], 'both');
-            $builder->orLike('name', $post['search'], 'both');
+            $builder->like('i.brand', $post['search'], 'both');
+            $builder->orLike('i.category', $post['search'], 'both');
+            $builder->orLike('i.name', $post['search'], 'both');
         }
         if (empty($post['price'])) {
-            $builder->where('is_delete', 0);
+            $builder->where('i.is_delete', 0);
         } elseif (!empty($post['price'] == '1')) {
-            $builder->orderBy('created_at', 'desc');
+            $builder->orderBy('i.created_at', 'desc');
         } elseif (!empty($post['price'] == '2')) {
-            $builder->orderBy('price', 'asc');
+            $builder->orderBy('i.listedprice', 'asc');
         } elseif (!empty($post['price'] == '3')) {
-            $builder->orderBy('price', 'desc');
+            $builder->orderBy('i.listedprice', 'desc');
+        } elseif (!empty($post['price'] == '4')) {
+            $builder->join('review r', 'i.id = r.product_id', 'left');
+            $builder->groupBy('i.id');
+            $builder->orderBy('AVG(r.rating)', 'DESC');
         } else {
             $builder->orderBy('id', 'asc');
         }
@@ -1044,15 +1105,16 @@ class HomeModel extends Model
                         <div class="">
                             <div class="single_capt_right">
                                 <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">';
-                                    for ($i = 1; $i <= get_review_count(@$row['id']); $i++) {
+            for ($i = 1; $i <= get_review_count(@$row['id']); $i++) {
                 $output .= '            <i class="fas fa-star filled" value="1"></i>';
-                                    }for ($i = 1; $i <= 5 - (int)get_review_count(@$row['id']); $i++) { 
+            }
+            for ($i = 1; $i <= 5 - (int)get_review_count(@$row['id']); $i++) {
                 $output .= '            <i class="far fa-star filled" value="1"></i>';
-                                    }
-                $output .= '            </div>
+            }
+            $output .= '            </div>
                                     </div>
                                 </div>
-                                <span class="rating_num">('. get_review_total($row['id']) .')</span>
+                                <span class="rating_num">(' . get_review_total($row['id']) . ')</span>
                             </div>
                     <div class="pr_desc">
                         <p>' . $row['description'] . '</p>
@@ -1274,7 +1336,7 @@ class HomeModel extends Model
     {
         $db = $this->db;
         $builder = $db->table('item');
-        $builder->select('MAX(price) as max_value');
+        $builder->select('MAX(listedprice) as max_value');
         $builder->where('is_delete', 0);
         $query = $builder->get();
         $max_value = $query->getRow();

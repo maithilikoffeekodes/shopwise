@@ -17,6 +17,7 @@
                                         <option value="1">Sort by newness</option>
                                         <option value="2">Sort by price: low to high</option>
                                         <option value="3">Sort by price: high to low</option>
+                                        <option value="4">Sort by top rated</option>
                                     </select>
                                 </div>
                             </div>

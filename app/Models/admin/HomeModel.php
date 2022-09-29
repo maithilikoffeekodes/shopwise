@@ -614,7 +614,8 @@ class HomeModel extends Model
             'igst' => $post['igst'],
             'cgst' => $post['cgst'],
             'sgst' => $post['sgst'],
-            'stock' => $post['stock']
+            'stock' => $post['stock'],
+            'is_featured' => $post['featured'] ? $post['featured'] : 0
         );
         if (isset($file)) {
             if ($file->isValid() && !$file->hasMoved()) {
