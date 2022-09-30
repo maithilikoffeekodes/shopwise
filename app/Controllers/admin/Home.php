@@ -5,7 +5,7 @@ namespace App\Controllers\admin;
 use App\Controllers\admin\BaseController;
 use App\Models\admin\HomeModel;
 use App\Models\admin\GeneralModel;
-// use Dompdf\Dompdf;
+use Dompdf\Dompdf;
 
 class Home extends BaseController
 {
@@ -174,13 +174,14 @@ class Home extends BaseController
 
         return view('admin/order/orderview', $data);
     }
-    // public function invoice(){
-    //     $dompdf = new Dompdf();
-    //     $html =  view('Hello');
-    //     $dompdf->loadHtml($html);
-    //     $dompdf->setPaper('A3', 'portrait');
-    //     $dompdf->render();  
-    // }
+    public function invoice($id=''){
+        $dompdf = new Dompdf();
+        $data['order'] = $this->model->get_orders_details($id);
+        $html =  view('invoice', $data);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A3', 'portrait');
+        $dompdf->render();  
+    }
     public function Getdata($method = '')
     {
         if ($method == 'brand') {
