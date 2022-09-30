@@ -27,6 +27,8 @@ class Home extends BaseController
         $data['featured_product'] = $this->model->featured_data();
         $data['most_view'] = $this->model->get_mostviewed_data();
         $data['banner'] = $this->model->get_banner_data();
+        $data['coupon'] = $this->model->get_coupon_data();
+
 
         if (!session('guestid') && !session('uid')) {
             $guestid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);

@@ -29,6 +29,7 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Coupon</th>
+                                    <th>Image</th>
                                     <th>Coupon Value</th>
                                     <th>Coupon Type</th>
                                     <th>Cart_min_value</th>

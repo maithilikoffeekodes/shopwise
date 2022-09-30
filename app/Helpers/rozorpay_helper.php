@@ -181,7 +181,7 @@ if (!function_exists('PaymentExecute')) {
                     'is_delete' => '1'
                 ));
 
-                $subject = "Your Order Details #OrderID - " . $result->ord_id . "- Kumo";
+                $subject = "Your Order Details #OrderID - " . $result->ord_id . "- Shopwise";
 
                 helper('base');
                 $message = mail_template($result->ord_id);

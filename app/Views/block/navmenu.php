@@ -1,14 +1,37 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="<?= url('Home/index')?>">
+        <a class="navbar-brand" href="<?= url('Home/index') ?>">
             <img class="logo_light" src="<?= ASSETS; ?>images/logo_light.png" alt="logo" />
             <img class="logo_dark" src="<?= ASSETS; ?>images/logo_dark.png" alt="logo" />
         </a>
         <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false">
             <span class="ion-android-menu"></span>
         </button> -->
+
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle nav-link">All Categories</a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <?php
+
+                            $db = \Config\Database::connect();
+                            $builder = $db->table('category');
+                            $builder->select('*');
+                            $builder->orderBy('id', 'RANDOM');
+                            $builder->where('is_delete', '0');
+                            $builder->limit(8);
+                            $query = $builder->get();
+                            $category = $query->getResultArray();
+
+                            foreach ($category as $row) { ?>
+
+                                <li><a class="dropdown-item nav-link nav_item" href="<?= url('Home/shoplist?category='.$row['id'])?>"><?= @$row['category'] ?></a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </li>
                 <li class="dropdown">
                     <a class="nav-link " href="<?= url('Home/index') ?>">Home</a>
                 </li>
@@ -221,11 +244,11 @@
             </ul>
         </div>
         <ul class="navbar-nav attr-nav align-items-center">
-            <li><a  class="nav-link search_trigger"><i class="linearicons-magnifier"></i></a>
+            <li><a class="nav-link search_trigger"><i class="linearicons-magnifier"></i></a>
                 <div class="search_wrap">
                     <span class="close-search"><i class="ion-ios-close-empty"></i></span>
                     <form>
-                        <input type="text" placeholder="Search" class="form-control"  id="searchdata" name="search" >
+                        <input type="text" placeholder="Search" class="form-control" id="searchdata" name="search">
                         <button type="submit" class="search_icon" onclick="return search1()"><i class="ion-ios-search-strong"></i></button>
                     </form>
                 </div>
@@ -272,7 +295,7 @@
                 </div> -->
             </li>
             <li class="dropdown">
-                <a class=" nav-link" ><i class="fa fa-user"></i></a>
+                <a class=" nav-link"><i class="fa fa-user"></i></a>
                 <div class="dropdown-menu">
                     <ul>
                         <?php if (empty(session('uid'))) { ?>
@@ -295,11 +318,11 @@
 
 <?= $this->section('scripts') ?>
 <script>
-	function search1() {
-		var search = document.getElementById('searchdata').value;
-		window.location.href = "<?= url('Home/shoplist?search=')?>" + search;
-		// PATH + "/Home/shoplist?search=" + search
-		return false;
-	}
+    function search1() {
+        var search = document.getElementById('searchdata').value;
+        window.location.href = "<?= url('Home/shoplist?search=') ?>" + search;
+        // PATH + "/Home/shoplist?search=" + search
+        return false;
+    }
 </script>
 <?= $this->endSection() ?>

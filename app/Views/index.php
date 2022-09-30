@@ -14,7 +14,7 @@
                             <div class="col-lg-7 col-9">
                                 <div class="banner_content overflow-hidden">
                                     <!-- <h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Get up to 50% off Today Only!</h5> -->
-                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s"><?= $row['slider'] ?></h2>
+                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Fashion</h2>
                                     <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="<?= $row['link'] ?>" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                 <div class="col-lg-7 col-9">
                                     <div class="banner_content overflow-hidden">
                                         <!-- <h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Get up to 50% off Today Only!</h5> -->
-                                        <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s"><?= $row['slider'] ?></h2>
+                                        <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Fashion</h2>
                                         <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="<?= $row['link'] ?>" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
                                     </div>
                                 </div>
@@ -49,26 +49,20 @@
 <div class="section pb_20">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <div class="single_banner">
-                    <img src="<?= ASSETS; ?>images/shop_banner_img1.jpg" alt="shop_banner_img1" />
-                    <div class="single_banner_info">
-                        <h5 class="single_bn_title1">Super Sale</h5>
-                        <h3 class="single_bn_title">New Collection</h3>
-                        <a href="<?= url('Home/shoplist') ?>" class="single_bn_link">Shop Now</a>
+            <?php foreach ($coupon as $row) { ?>
+                <div class="col-md-6">
+                    <div class="single_banner">
+                        <img src="<?= $row['image'] ?>" alt="shop_banner_img1" />
+                        <div class="single_banner_info">
+                            <h5 class="single_bn_title1">Coupon Discount</h5>
+                            <h6 class="single_bn_title">Get Discount on Minimum purchase of &#8377 <?= $row['cart_min_value'] ?></h6>
+                            <!-- <p>Coupon Code</p> -->
+                            <h5 class="coupon-code"><?= $row['coupon_code'] ?></h5>
+                            <a href="<?= url('Home/shoplist') ?>" class="single_bn_link">Shop Now</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="single_banner">
-                    <img src="<?= ASSETS; ?>images/shop_banner_img2.jpg" alt="shop_banner_img2" />
-                    <div class="single_banner_info">
-                        <h3 class="single_bn_title">New Season</h3>
-                        <h4 class="single_bn_title1">Sale 40% Off</h4>
-                        <a href="<?= url('Home/shoplist') ?>" class="single_bn_link">Shop Now</a>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </div>
@@ -124,6 +118,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product_info">
+                                            <div class="elso_titl"><span class="small"><?= $row['category_name'] ?></span></div>
                                                 <h6 class="product_title"><a href="<?= url('Home/productdetail/' . $row['id']) ?>"><?= $row['name'] ?></a></h6>
                                                 <div class="product_price">
                                                     <span class="price">&#8377 <?= $row['listedprice'] ?></span>
@@ -169,7 +164,7 @@
                     </div>
                     <div class="tab-pane fade" id="sellers" role="tabpanel" aria-labelledby="sellers-tab">
                         <div class="row shop_container">
-                        <?php foreach ($top_seller as $row) { ?>
+                            <?php foreach ($top_seller as $row) { ?>
                                 <div class="col-lg-3 col-md-4 col-6">
                                     <a href="<?= url('Home/productdetail/' . $row['id']) ?>">
                                         <div class="product">
@@ -183,6 +178,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product_info">
+                                            <div class="elso_titl"><span class="small"><?= $row['category_name'] ?></span></div>
                                                 <h6 class="product_title"><a href="<?= url('Home/productdetail/' . $row['id']) ?>"><?= $row['name'] ?></a></h6>
                                                 <div class="product_price">
                                                     <span class="price">&#8377 <?= $row['listedprice'] ?></span>
@@ -228,7 +224,7 @@
                     </div>
                     <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
                         <div class="row shop_container">
-                        <?php foreach ($featured_product as $row) { ?>
+                            <?php foreach ($featured_product as $row) { ?>
                                 <div class="col-lg-3 col-md-4 col-6">
                                     <a href="<?= url('Home/productdetail/' . $row['id']) ?>">
                                         <div class="product">
@@ -242,6 +238,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product_info">
+                                            <div class="elso_titl"><span class="small"><?= $row['category_name'] ?></span></div>
                                                 <h6 class="product_title"><a href="<?= url('Home/productdetail/' . $row['id']) ?>"><?= $row['name'] ?></a></h6>
                                                 <div class="product_price">
                                                     <span class="price">&#8377 <?= $row['listedprice'] ?></span>
@@ -653,7 +650,7 @@
                     </div> -->
                     <div class="tab-pane fade" id="most-views" role="tabpanel" aria-labelledby="most-views-tab">
                         <div class="row shop_container">
-                        <?php foreach ($most_view as $row) { ?>
+                            <?php foreach ($most_view as $row) { ?>
                                 <div class="col-lg-3 col-md-4 col-6">
                                     <a href="<?= url('Home/productdetail/' . $row['id']) ?>">
                                         <div class="product">
@@ -726,16 +723,16 @@
                 <div class="trand_banner_text text-center text-md-left">
                     <div class="heading_s1 mb-3">
                         <span class="sub_heading">New season trends!</span>
-                        <h2><?= @$banner['banner']?></h2>
+                        <h2><?= @$banner['banner'] ?></h2>
                     </div>
                     <h5 class="mb-4">Sale Get up to 50% Off</h5>
-                    <a href="<?= @$banner['link']?>" class="btn btn-fill-out rounded-0">Shop Now</a>
+                    <a href="<?= @$banner['link'] ?>" class="btn btn-fill-out rounded-0">Shop Now</a>
                 </div>
                 <div class="medium_divider clearfix"></div>
             </div>
             <div class="col-md-5">
                 <div class="text-center trading_img">
-                    <img src="<?= @$banner['image']?>" alt="tranding_img" />
+                    <img src="<?= @$banner['image'] ?>" alt="tranding_img" />
                 </div>
             </div>
         </div>
@@ -809,6 +806,34 @@
     </div>
 </div>
 <!-- END SECTION SHOP -->
+<div class="section small_pt">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading_tab_header">
+                    <div class="heading_s2">
+                        <h2>Our Brands</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="client_logo carousel_slider owl-carousel owl-theme nav_style3" data-dots="false" data-nav="true" data-margin="30" data-loop="true" data-autoplay="true" data-responsive='{"0":{"items": "2"}, "480":{"items": "3"}, "767":{"items": "4"}, "991":{"items": "5"}}'>
+                    <?php foreach ($rand_brand as $row) { ?>
+                        <div class="item">
+                            <div class="cl_logo">
+                                <a href="<?= url('Home/shoplist?brand=' . $row['id']) ?>">
+                                    <img src="<?= $row['image'] ?>" alt="cl_logo" style="height:120px;" />
+                                </a>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- START SECTION TESTIMONIAL -->
 <div class="section bg_redon">
     <div class="container">
@@ -835,6 +860,16 @@
                                 <div class="author_name">
                                     <h6><?= $row['name'] ?></h6>
                                     <!-- <span>Designer</span> -->
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="star-rating align-items-center d-flex justify-content-center ml-3 mb-1 p-0">
+                                    <?php for ($i = 1; $i <= get_review_count(@$row['id']); $i++) { ?>
+                                        <i class="fas fa-star filled" value="1"></i>
+                                    <?php } ?>
+                                    <?php for ($i = 1; $i <= 5 - (int)get_review_count(@$row['id']); $i++) { ?>
+                                        <i class="far fa-star filled" value="1"></i>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

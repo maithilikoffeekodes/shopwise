@@ -275,6 +275,7 @@
 			success: function(response) {
 				console.log(response);
 				if (response.final_total && response.coupon_discount != '') {
+                    toastr.success(response.msg);
 					$('.coupon-discount').html(response.coupon_discount);
 					$('.total_amt').text(response.final_total);
 					$('#grand_total').val(response.final_total);

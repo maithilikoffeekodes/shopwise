@@ -138,8 +138,10 @@ class Home extends BaseController
     public function createCoupon($id = '')
     {
         $post = $this->request->getPost();
+        $file = $this->request->getFile('image');
+
         if (!empty($post)) {
-            $msg = $this->model->insert_edit_coupon($post);
+            $msg = $this->model->insert_edit_coupon($post,$file);
             return $this->response->setJSON($msg);
         }
         if ($id != '') {

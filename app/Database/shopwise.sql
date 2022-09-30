@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2022 at 12:49 PM
+-- Generation Time: Sep 30, 2022 at 12:37 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -44,6 +44,31 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `email`, `password`, `is_delete`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
 (1, 'admin@gmail.com', '12345', 0, '2022-09-24 08:02:27', '1', '2022-09-24 08:02:27', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `banner`
+--
+
+CREATE TABLE `banner` (
+  `id` int(11) NOT NULL,
+  `banner` varchar(255) NOT NULL,
+  `image` longtext NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `created_by` varchar(255) NOT NULL,
+  `created_at` date NOT NULL,
+  `updated_by` varchar(255) NOT NULL,
+  `updated_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `banner`
+--
+
+INSERT INTO `banner` (`id`, `banner`, `image`, `link`, `is_delete`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
+(1, 'Best Summer Collection', '/banner/20220929/1664452415_ea8a2b08d5ac50a187f6.png', 'localhost:8080/Home/shoplist', 0, '1', '2022-09-29', '1', '2022-09-29');
 
 -- --------------------------------------------------------
 
@@ -136,11 +161,11 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `product_id`, `date`, `price`, `quantity`, `coupon_discount`, `is_delete`, `created_at`, `created_by`, `update_at`, `update_by`) VALUES
-(1, '1', 17, '2022-09-22', '4050', 3, '200', 1, '2022-09-22 05:23:20.000000', 1, '2022-09-28 06:44:42', 1),
-(2, '1', 1, '2022-09-22', '1000', 3, '200', 1, '2022-09-22 05:23:33.000000', 1, '2022-09-28 06:44:42', 1),
-(3, '1', 6, '2022-09-22', '225', 3, '200', 1, '2022-09-22 06:08:17.000000', 1, '2022-09-28 06:44:42', 1),
+(1, '1', 17, '2022-09-22', '4050', 1, '200', 1, '2022-09-22 05:23:20.000000', 1, '2022-09-30 05:27:44', 1),
+(2, '1', 1, '2022-09-22', '1000', 1, '200', 1, '2022-09-22 05:23:33.000000', 1, '2022-09-30 05:27:44', 1),
+(3, '1', 6, '2022-09-22', '225', 1, '200', 1, '2022-09-22 06:08:17.000000', 1, '2022-09-30 05:27:44', 1),
 (4, 'e4b4092c23e6c750e9db', 23, '2022-09-22', '580', 1, '0', 0, '2022-09-22 07:14:09.000000', 0, '2022-09-22 07:14:14', 0),
-(5, '1', 23, '2022-09-22', '580', 3, '200', 1, '2022-09-22 07:14:31.000000', 1, '2022-09-28 06:44:42', 1),
+(5, '1', 23, '2022-09-22', '580', 1, '200', 1, '2022-09-22 07:14:31.000000', 1, '2022-09-30 05:27:44', 1),
 (6, '3c8c5d2f689af82d7ca5', 16, '2022-09-23', '405', 1, '0', 1, '2022-09-23 00:37:41.000000', 3, '2022-09-23 00:37:47', 3),
 (7, '4', 19, '2022-09-23', '4500', 1, '0', 1, '2022-09-23 01:08:57.000000', 4, '2022-09-23 01:09:05', 4),
 (8, '8ae876ae60b6d0e6e85e', 10, '2022-09-24', '2200', 1, '', 0, '2022-09-24 06:29:48.000000', 8, '0000-00-00 00:00:00', 0),
@@ -148,13 +173,18 @@ INSERT INTO `cart` (`id`, `user_id`, `product_id`, `date`, `price`, `quantity`, 
 (10, '0f0cdc444cd150b323c9', 24, '2022-09-26', '396', 1, '39.6', 1, '2022-09-26 23:13:30.000000', 0, '2022-09-26 23:13:56', 0),
 (11, '0f0cdc444cd150b323c9', 1, '2022-09-27', '900', 1, '', 0, '2022-09-27 00:19:11.000000', 0, '0000-00-00 00:00:00', 0),
 (12, '0f0cdc444cd150b323c9', 25, '2022-09-27', '1875', 1, '', 0, '2022-09-27 00:40:18.000000', 0, '0000-00-00 00:00:00', 0),
-(13, '5', 25, '2022-09-27', '1875', 2, '0', 1, '2022-09-27 01:37:55.000000', 5, '2022-09-27 01:38:34', 5),
-(14, '5', 1, '2022-09-27', '1000', 2, '0', 1, '2022-09-27 01:38:22.000000', 5, '2022-09-27 01:38:34', 5),
-(15, '5', 24, '2022-09-27', '396', 1, '', 0, '2022-09-27 02:22:35.000000', 5, '0000-00-00 00:00:00', 0),
+(13, '5', 25, '2022-09-27', '1875', 1, '0', 1, '2022-09-27 01:37:55.000000', 5, '2022-09-29 07:23:37', 5),
+(14, '5', 1, '2022-09-27', '1000', 1, '0', 1, '2022-09-27 01:38:22.000000', 5, '2022-09-29 07:23:37', 5),
+(15, '5', 24, '2022-09-27', '396', 1, '0', 1, '2022-09-27 02:22:35.000000', 5, '2022-09-29 07:23:37', 5),
 (16, '06ee84394bafca6ff804', 21, '2022-09-28', '960', 1, '', 0, '2022-09-28 04:44:26.000000', 6, '0000-00-00 00:00:00', 0),
 (17, '2', 16, '2022-09-28', '405', 2, '0', 1, '2022-09-28 05:20:39.000000', 2, '2022-09-28 05:20:54', 2),
-(18, '1', 3, '2022-09-28', '450', 3, '200', 1, '2022-09-28 06:36:16.000000', 1, '2022-09-28 06:44:42', 1),
-(19, '1', 25, '2022-09-28', '2500', 1, '', 0, '2022-09-28 06:48:57.000000', 1, '0000-00-00 00:00:00', 0);
+(18, '1', 3, '2022-09-28', '450', 1, '200', 1, '2022-09-28 06:36:16.000000', 1, '2022-09-30 05:27:44', 1),
+(19, '1', 25, '2022-09-28', '2500', 1, '200', 1, '2022-09-28 06:48:57.000000', 1, '2022-09-30 05:27:44', 1),
+(20, '5', 25, '2022-09-29', '1875', 1, '0', 1, '2022-09-29 07:23:19.000000', 5, '2022-09-29 07:23:37', 5),
+(21, '1', 19, '2022-09-30', '1800', 1, '200', 1, '2022-09-30 05:07:06.000000', 1, '2022-09-30 05:27:44', 1),
+(22, '1', 23, '2022-09-30', '580', 1, '200', 1, '2022-09-30 05:23:10.000000', 1, '2022-09-30 05:27:44', 1),
+(23, '1', 6, '2022-09-30', '225', 1, '200', 1, '2022-09-30 05:23:34.000000', 1, '2022-09-30 05:27:44', 1),
+(24, '1', 26, '2022-09-30', '500', 1, '', 0, '2022-09-30 05:29:46.000000', 1, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -48204,7 +48234,19 @@ INSERT INTO `contact` (`id`, `name`, `email`, `phone`, `subject`, `message`, `cr
 (6, 'muskan12', 'maithili.Koffeekodes@gmail.com', '8780653328', 'love it', 'WDSEFGDFHYTGRJUYH7OKL.;P', '2022-09-27 03:05:21', 5, 0),
 (7, 'muskan12', 'maithili.Koffeekodes@gmail.com', '8780653328', 'love it', 'WDSEFGDFHYTGRJUYH7OKL.;P', '2022-09-27 03:05:34', 5, 1),
 (8, 'muskan12', 'maithili.Koffeekodes@gmail.com', '8780653328', 'love it', 'WDSEFGDFHYTGRJUYH7OKL.;P', '2022-09-27 03:11:01', 5, 1),
-(9, 'jenith', 'jenithdavda12345@gmail.com', '788998798', '', 'vd', '2022-09-28 06:41:15', 1, 0);
+(9, 'jenith', 'jenithdavda12345@gmail.com', '788998798', '', 'vd', '2022-09-28 06:41:15', 1, 0),
+(10, 'maithili', 'maithili.Koffeekodes@gmail.com', '8780653328', 'love it', '3wefdgtfrghygthujghkh', '2022-09-29 07:00:29', 948742679, 0),
+(11, 'maithili', 'maithili.Koffeekodes@gmail.com', '8780653328', 'love it', 'hjghkmfgnsdhdfcvn v', '2022-09-29 07:06:04', 948742679, 0),
+(12, 'abc12', 'maithili.Koffeekodes@gmail.com', '987456874', 'dfbhfh', 'dfhcdfjhdfhzhcdvhzcndgthnvc', '2022-09-29 07:08:59', 948742679, 0),
+(13, 'abc12', 'maithili.Koffeekodes@gmail.com', '987456874', 'dfbhfh', 'dfhcdfjhdfhzhcdvhzcndgthnvc', '2022-09-29 07:09:50', 948742679, 0),
+(14, 'abc12', 'maithili.Koffeekodes@gmail.com', '987456874', 'love it', 'hhjfxxbfnbm n, mh,ṁhk.,', '2022-09-29 07:14:30', 948742679, 0),
+(15, 'xyz', 'maithili.Koffeekodes@gmail.com', '987456874', 'dfbhfh', 'f hvjcvbmkbchunb,lnmhki.', '2022-09-29 07:16:41', 948742679, 0),
+(16, 'rohini', 'rohini.kinkar05@gmail.com', '987456874', 'love it', 'I really love it', '2022-09-29 07:19:19', 948742679, 0),
+(17, 'maithili', 'maithili.Koffeekodes@gmail.com', '987456874', 'dfbhfh', 'gyyhjngnjhnmbgmkjmb,jk', '2022-09-30 05:12:17', 1, 0),
+(18, 'maithili', 'maithilijejani@gmail.com', '987456874', 'love it', 'kmnhkjmhnjuhnghjghj', '2022-09-30 05:14:03', 1, 0),
+(19, 'maithili', 'maithilijejani@gmail.com', '987456874', 'love it', 'kmsxASkmxjmAKSmMZAS', '2022-09-30 05:15:22', 1, 0),
+(20, 'maithili', 'rohini.kinkar05@gmail.com', '987456874', 'love it', 'gjygjgnjgbnjgnjnjgj', '2022-09-30 05:15:54', 1, 0),
+(21, 'maithili', 'maithili.Koffeekodes@gmail.com', '987456874', 'love it', 'njhnghnjnbgvbnvbhcvbcvbgc', '2022-09-30 05:19:08', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -48215,6 +48257,7 @@ INSERT INTO `contact` (`id`, `name`, `email`, `phone`, `subject`, `message`, `cr
 CREATE TABLE `coupon` (
   `id` int(10) NOT NULL,
   `coupon_code` varchar(255) NOT NULL,
+  `image` longtext NOT NULL,
   `coupon_value` int(11) NOT NULL,
   `coupon_type` varchar(255) NOT NULL,
   `cart_min_value` int(11) NOT NULL,
@@ -48230,9 +48273,10 @@ CREATE TABLE `coupon` (
 -- Dumping data for table `coupon`
 --
 
-INSERT INTO `coupon` (`id`, `coupon_code`, `coupon_value`, `coupon_type`, `cart_min_value`, `status`, `is_delete`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(1, 'FirstCo35', 10, 'Percentage', 250, 0, 0, '2022-09-13 01:36:39', '1', '0000-00-00 00:00:00', ''),
-(2, 'KUMO456', 200, 'Rupees', 400, 0, 0, '2022-09-13 01:47:00', '1', '2022-09-21 04:30:24', '1');
+INSERT INTO `coupon` (`id`, `coupon_code`, `image`, `coupon_value`, `coupon_type`, `cart_min_value`, `status`, `is_delete`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
+(1, 'FirstCo35', '', 10, 'Percentage', 250, 0, 0, '2022-09-13 01:36:39', '1', '0000-00-00 00:00:00', ''),
+(2, 'KUMO456', '/coupon/20220930/1664516709_2108230e5bad3d43cd7b.jpg', 200, 'Rupees', 700, 0, 0, '2022-09-13 01:47:00', '1', '2022-09-30 00:45:09', '1'),
+(3, 'Shop250', '/coupon/20220930/1664516588_e69462f96011d2e59e69.jpg', 2000, 'Rupees', 4000, 0, 0, '2022-09-30 00:40:44', '1', '2022-09-30 00:43:08', '1');
 
 -- --------------------------------------------------------
 
@@ -48586,7 +48630,9 @@ INSERT INTO `orders` (`id`, `user_id`, `sub_total`, `tax_amt`, `coupon-discount`
 (7, '0f0cdc444cd150b323c9', '396', '47.52', '39.6', '403.92', NULL, 1, '1bd28c3041ed2f00a116', 'success', 'Razorpay', 0, 0, 0, 0, 13, 1, '2022-09-26 23:15:29', '0f0cdc444cd150b323c9', '0000-00-00 00:00:00', ''),
 (11, '5', '5750', '690', '0', '6440.00', NULL, 1, '3c2cbfce8df101ff76fa', 'success', 'Razorpay', 0, 0, 0, 5, 0, 0, '2022-09-27 01:41:43', '5', '0000-00-00 00:00:00', ''),
 (12, '2', '810', '97.2', '0', '907.20', NULL, 1, 'bc855305e60447f5b142', 'success', 'Razorpay', 0, 0, 0, 2, 0, 0, '2022-09-28 05:21:04', '2', '0000-00-00 00:00:00', ''),
-(13, '1', '1350', '162', '200', '1312.00', NULL, 1, 'd13eb137ec1b6acdb0f2', 'success', 'Razorpay', 0, 0, 0, 0, 14, 0, '2022-09-28 06:45:55', '1', '0000-00-00 00:00:00', '');
+(13, '1', '1350', '162', '200', '1312.00', NULL, 1, 'd13eb137ec1b6acdb0f2', 'success', 'Razorpay', 0, 0, 0, 0, 14, 0, '2022-09-28 06:45:55', '1', '0000-00-00 00:00:00', ''),
+(14, '5', '2271', '272.52', '0', '2543.52', NULL, 1, 'e2c36c3b1cb679d21256', 'success', 'Razorpay', 0, 0, 0, 5, 0, 0, '2022-09-29 07:23:43', '5', '0000-00-00 00:00:00', ''),
+(17, '1', '805', '80.5', '200', '685.50', NULL, 1, '025ef6709e0812f082fc', 'success', 'Razorpay', 0, 0, 0, 1, 0, 0, '2022-09-30 05:27:52', '1', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -48631,7 +48677,11 @@ INSERT INTO `order_item` (`id`, `user_id`, `order_id`, `product_id`, `quantity`,
 (15, '5', 11, 25, 2, '1875.00', '3750.00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
 (16, '5', 11, 1, 2, '1000.00', '2000.00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
 (17, '2', 12, 16, 2, '405.00', '810.00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
-(18, '1', 13, 3, 3, '450.00', '1350.00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0);
+(18, '1', 13, 3, 3, '450.00', '1350.00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(19, '5', 14, 24, 1, '396.00', '396.00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(20, '5', 14, 25, 1, '1875.00', '1875.00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(23, '1', 17, 23, 1, '580.00', '580.00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(24, '1', 17, 6, 1, '225.00', '225.00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -48710,7 +48760,11 @@ INSERT INTO `payment_log` (`PaymentId`, `UserId`, `ord_id`, `TxnId`, `OrderID`, 
 (10, '4', 10, '20d21432febab6d52304', NULL, '', '6440', '', 'Razorpay', '', NULL, 1, 0, b'0', 0, 0, 1, '', '', '', 0, 0, '2022-09-27 01:39:45', 5, NULL, NULL, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
 (11, '5', 11, '3c2cbfce8df101ff76fa', 'order_KMpTkJL2YgAPQP', '', '6440', '', 'Razorpay', 'Transaction has been tampered. Please try again!!', NULL, 1, 0, b'0', 1, 1, 0, '', '', '', 0, 0, '2022-09-27 01:41:43', 5, '2022-09-27 01:41:55', NULL, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
 (12, '2', 12, 'bc855305e60447f5b142', 'order_KNHkWL9FkeZRYZ', '', '907.2', '', 'Razorpay', 'Transaction has been tampered. Please try again!!', NULL, 1, 0, b'0', 1, 1, 0, '', '', '', 0, 0, '2022-09-28 05:21:04', 2, '2022-09-28 05:21:15', NULL, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
-(13, '1', 13, 'd13eb137ec1b6acdb0f2', 'order_KNJC9RagGhQaWZ', '', '1312', '', 'Razorpay', 'Transaction has been tampered. Please try again!!', NULL, 1, 0, b'0', 1, 1, 0, '', '', '', 0, 0, '2022-09-28 06:45:55', 1, '2022-09-28 06:46:07', NULL, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00');
+(13, '1', 13, 'd13eb137ec1b6acdb0f2', 'order_KNJC9RagGhQaWZ', '', '1312', '', 'Razorpay', 'Transaction has been tampered. Please try again!!', NULL, 1, 0, b'0', 1, 1, 0, '', '', '', 0, 0, '2022-09-28 06:45:55', 1, '2022-09-28 06:46:07', NULL, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(14, '5', 14, 'e2c36c3b1cb679d21256', 'order_KNiNFzlKhymx32', '', '2543.52', '', 'Razorpay', 'Transaction has been tampered. Please try again!!', NULL, 1, 0, b'0', 1, 1, 0, '', '', '', 0, 0, '2022-09-29 07:23:43', 5, '2022-09-29 07:23:56', NULL, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(15, '1', 15, '907252e8186e00cf8b37', 'order_KO4X8Juw6gT1Hy', '', '5600', '', 'Razorpay', 'Transaction has been tampered. Please try again!!', NULL, 1, 0, b'0', 1, 1, 0, '', '', '', 0, 0, '2022-09-30 05:04:21', 1, '2022-09-30 05:04:37', NULL, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(16, '1', 16, '2841424e8b096ee10332', 'order_KO4bbLABDkgS8A', '', '3960', '', 'Razorpay', 'Transaction has been tampered. Please try again!!', NULL, 1, 0, b'0', 1, 1, 0, '', '', '', 0, 0, '2022-09-30 05:08:35', 1, '2022-09-30 05:08:47', NULL, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(17, '1', 17, '025ef6709e0812f082fc', 'order_KO4vyQVhshkft8', '', '685.5', '', 'Razorpay', 'Transaction has been tampered. Please try again!!', NULL, 1, 0, b'0', 1, 1, 0, '', '', '', 0, 0, '2022-09-30 05:27:52', 1, '2022-09-30 05:28:04', NULL, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -48740,14 +48794,14 @@ INSERT INTO `review` (`id`, `user_id`, `product_id`, `rating`, `review`, `name`,
 (2, 'fd8d1889bb7d23cb39e0', '16', '3', 'The material has a sweaty armpit smell and a weird feel to it. It’s soft but is a material that would smell awful mixed with sweat and would stick to sweat. I would prefer a soft cotton material.\n\nI love the neck and fit. I ordered a medium. My abdomen wh', 'muskan12', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-15 02:31:21', 'fd8d1889bb7d23cb39e0'),
 (3, 'fd8d1889bb7d23cb39e0', '1', '4', 'Very cute dress- size up! I ordered a large, 5’4 3 months postpartum so I still have baby weight to lose, dress fit everywhere but my chest area (squished my boobs) and upper arms- tight with no give. I’m gonna order up and see if that helps! It’s adorbs ', 'rohan', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-15 02:40:41', 'fd8d1889bb7d23cb39e0'),
 (4, 'fd8d1889bb7d23cb39e0', '1', '4', 'Love the dress. It has no give in the chest so keep that in mind. But the material is light and it’s a comfy dress.', 'rohan', 'maithili.Koffeekodes@gmail.com', 1, '2022-09-15 02:40:46', 'fd8d1889bb7d23cb39e0'),
-(5, 'fd8d1889bb7d23cb39e0', '1', '', '', '', '', 1, '2022-09-15 02:59:26', 'fd8d1889bb7d23cb39e0'),
-(6, 'fd8d1889bb7d23cb39e0', '1', '', 'Love the dress. It has no give in the chest so keep that in mind. But the material is light and it’s a comfy dress.', 'abc', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-15 03:00:54', 'fd8d1889bb7d23cb39e0'),
-(11, '1', '6', '3', 'very cool and good', 'abc', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-19 02:35:42', '1'),
-(12, '1', '6', '4', 'so comfortable ', 'xyz', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-19 02:36:47', '1'),
-(13, '1', '15', '3', 'ryrtyrturtyhcvbcfjf xcvxcncvmghyjtyj', 'muskan12', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-19 06:15:36', '1'),
-(14, '1', '18', '4', 'very cool :)', 'abc', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-22 03:57:04', '1'),
+(5, 'fd8d1889bb7d23cb39e0', '1', '2', 'Love the dress. It has no give in the chest so keep that in mind. But the material is light and it’s a comfy dress.', '', '', 1, '2022-09-15 02:59:26', 'fd8d1889bb7d23cb39e0'),
+(6, 'fd8d1889bb7d23cb39e0', '1', '3', 'Love the dress. It has no give in the chest so keep that in mind. But the material is light and it’s a comfy dress.', 'abc', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-15 03:00:54', 'fd8d1889bb7d23cb39e0'),
+(11, '1', '6', '3', 'Love the dress. It has no give in the chest so keep that in mind. But the material is light and it’s a comfy dress.', 'abc', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-19 02:35:42', '1'),
+(12, '1', '6', '4', 'Love the dress. It has no give in the chest so keep that in mind. But the material is light and it’s a comfy dress.', 'xyz', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-19 02:36:47', '1'),
+(13, '1', '15', '3', 'Very cute dress- size up! I ordered a large, 5’4 3 months postpartum so I still have baby weight to lose, dress fit everywhere but my chest area (squished my boobs) and upper arms- tight with no give. I’m gonna order up and see if that helps! It’s adorbs ', 'muskan12', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-19 06:15:36', '1'),
+(14, '1', '18', '4', 'Very cute dress- size up! I ordered a large, 5’4 3 months postpartum so I still have baby weight to lose, dress fit everywhere but my chest area (squished my boobs) and upper arms- tight with no give. I’m gonna order up and see if that helps! It’s adorbs ', 'abc', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-22 03:57:04', '1'),
 (15, '4', '24', '3', 'Nice lipstick,i loved it so much', 'abc', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-23 01:33:02', '4'),
-(16, '5', '3', '', 'rhyfvtghnvfgjngynjvg', 'muskan', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-27 02:04:45', '5');
+(16, '5', '3', '3', 'Very cute dress- size up! I ordered a large, 5’4 3 months postpartum so I still have baby weight to lose, dress fit everywhere but my chest area (squished my boobs) and upper arms- tight with no give. I’m gonna order up and see if that helps! It’s adorbs ', 'muskan', 'maithili.Koffeekodes@gmail.com', 0, '2022-09-27 02:04:45', '5');
 
 -- --------------------------------------------------------
 
@@ -48782,7 +48836,7 @@ CREATE TABLE `shipping_address` (
 INSERT INTO `shipping_address` (`id`, `user_id`, `fname`, `lname`, `email`, `mobileno`, `address`, `address2`, `city`, `state`, `pincode`, `address_type`, `is_delete`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
 (1, '1', 'rohan123', 'gupta', 'maithili.Koffeekodes@gmail.com', '98453674534', 'A-104 hare krishna appartment opp ld hall bhatar', '', '1041', '12', '395007', 'home', 1, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', ''),
 (3, 'f45b8e66dd5f8842b2fd', 'abc', 'xyz', 'maithili.Koffeekodes@gmail.com', '98453674534', 'A-104 hare krishna appartment opp ld hall bhimrad', '', '1041', '12', '395007', 'home', 0, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', ''),
-(5, '1', 'Maithili', 'Jejni', 'maithili.Koffeekodes@gmail.com', '9898651846', 'A-102  shaleen avenue opp venus', '', '1041', '12', '395007', 'work', 0, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', ''),
+(5, '1', 'Maithili', 'Jejni', 'maithilijejani@gmail.com', '9898651846', 'A-102  shaleen avenue opp venus', '', '1041', '12', '395007', 'work', 0, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', ''),
 (7, '99bb35e2408619eb7a59', 'abc123', 'xyz123', 'maithili.Koffeekodes@gmail.com', '9898651846', 'A-104 roopam appartment', '', '1041', '12', '395007', 'home', 0, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', ''),
 (8, '99bb35e2408619eb7a59', 'thngvth', 'gnfyjuhg', 'maithili.Koffeekodes@gmail.com', '98453674555', 'dfjtfkjvytklcmjn cdtrjnfyjt', '', '300', '3', '395007', 'home', 1, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', ''),
 (9, '3c8c5d2f689af82d7ca5', 'neha', 'naredi', 'maithili.Koffeekodes@gmail.com', '9898651846', 'A-104 roopam appartment', '', '1041', '12', '395007', 'home', 0, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', ''),
@@ -53028,6 +53082,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `banner`
+--
+ALTER TABLE `banner`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `brand`
 --
 ALTER TABLE `brand`
@@ -53162,6 +53222,12 @@ ALTER TABLE `admin`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `banner`
+--
+ALTER TABLE `banner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
@@ -53171,7 +53237,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -53189,13 +53255,13 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `coupon`
 --
 ALTER TABLE `coupon`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `imagebook`
@@ -53213,13 +53279,13 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `order_item`
 --
 ALTER TABLE `order_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `pages_views`
@@ -53231,7 +53297,7 @@ ALTER TABLE `pages_views`
 -- AUTO_INCREMENT for table `payment_log`
 --
 ALTER TABLE `payment_log`
-  MODIFY `PaymentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `PaymentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `review`

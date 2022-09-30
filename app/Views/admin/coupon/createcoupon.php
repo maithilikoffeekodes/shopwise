@@ -11,6 +11,10 @@
                 <input value="<?= @$coupon['id'] ?>" name="id" type="hidden">
             </div>
             <div class="form-group">
+                <label class="form-label">Image : <span class="tx-danger">*</span></label>
+                <input type="file" class="dropify" data-height="200" name="image" data-height="100" data-default-file="<?= (!empty(@$coupon)) ? @$coupon['image'] : '' ?>">
+            </div>
+            <div class="form-group">
                 <label class="form-label">Coupon Value: <span class="tx-danger">*</span></label>
                 <input class="form-control" name="coupon_value" placeholder="Enter Coupon Value" required type="text" value="<?= @$coupon['coupon_value']?>" required>
             </div>
@@ -100,6 +104,17 @@
     $('.select2').select2({
         placeholder: 'Choose one',
         width: '100%'
+    });
+    $('.dropify').dropify({
+        messages: {
+            'default': 'Drag and drop a file here or click',
+            'replace': 'Drag and drop or click to replace',
+            'remove': 'Remove',
+            'error': 'Ooops, something wrong appended.'
+        },
+        error: {
+            'fileSize': 'The file size is too big (2M max).'
+        }
     });
 </script>
 <?= $this->endSection() ?>

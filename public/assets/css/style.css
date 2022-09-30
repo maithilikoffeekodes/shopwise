@@ -3628,9 +3628,16 @@ input.text {
 
 .single_bn_title {
     font-weight: bold;
-    font-size: 32px;
+    font-size: 25px;
 }
-
+.coupon-code{
+    padding: 10px;
+    background-color: #FF324D;
+    width: 120px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
 .single_bn_link {
     position: relative;
 }

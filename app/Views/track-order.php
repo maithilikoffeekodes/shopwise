@@ -189,7 +189,7 @@
                     date_default_timezone_set('Asia/Kolkata');
                     $today = date('Y-m-d');
                     // $today = date('2022-09-22');
-                    $delivery_date = date('Y-m-d', strtotime($date . ' + 14 days'));
+                    $delivery_date = date('Y-m-d', strtotime($date . ' + 12 days'));
                     $shipped = date('Y-m-d', strtotime($date . ' + 2 days'));
                     $package_left = date('Y-m-d', strtotime($shipped . ' + 2 days'));
                     $package_arrived = date('Y-m-d', strtotime($package_left . ' + 2 days'));

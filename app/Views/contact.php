@@ -72,7 +72,7 @@
                 <div class="heading_s1">
                     <h2>Get In touch</h2>
                 </div>
-                <p class="leads">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+                <p class="leads"></p>
                 <div class="field_form">
                     <form class="ajax-form-submit" action="<?= url('Home/contact') ?>" method="post">
 

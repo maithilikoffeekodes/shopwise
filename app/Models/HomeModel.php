@@ -177,7 +177,7 @@ class HomeModel extends Model
         $builder->select('*');
         // $builder->orderBy('id', 'desc');
         $builder->where('is_delete', '0');
-        // $builder->limit(5);
+        $builder->limit(3);
         $query = $builder->get();
         $getRandslider = $query->getResultArray();
         // echo "<pre>";print_r($getRanditem);exit;
@@ -235,6 +235,19 @@ class HomeModel extends Model
 
         return $result;
     }
+    public function get_coupon_data()
+    {
+        $db = $this->db;
+        $builder = $db->table('coupon');
+        $builder->select('*');
+        $builder->orderBy('id', 'desc');
+        $builder->where('is_delete', '0');
+        $builder->limit(2);
+        $query = $builder->get();
+        $result = $query->getResultArray();
+        // echo "<pre>";print_r($result);exit;
+        return $result;
+    }
     public function top_rated_data()
     {
         $db = $this->db;
@@ -251,10 +264,12 @@ class HomeModel extends Model
     public function latest_product_data()
     {
         $db = $this->db;
-        $builder = $db->table('item');
-        $builder->select('*');
-        $builder->orderBy('created_at', 'DESC');
-        $builder->where('is_delete', '0');
+        $builder = $db->table('item i');
+        $builder->select('i.*,b.brand as brand_name,c.category as category_name');
+        $builder->join('brand b', 'b.id=i.brand');
+        $builder->join('category c', 'c.id=i.category');
+        $builder->orderBy('i.created_at', 'DESC');
+        $builder->where('i.is_delete', '0');
         $builder->limit(8);
         $query = $builder->get();
         $latest = $query->getResultArray();
@@ -264,9 +279,11 @@ class HomeModel extends Model
     {
         $db = $this->db;
         $builder = $db->table('order_item o');
-        $builder->select('o.*,o.product_id, SUM(o.quantity) AS TotalQuantity,i.*');
+        $builder->select('o.*,o.product_id, SUM(o.quantity) AS TotalQuantity,i.*,b.brand as brand_name,c.category as category_name');
         $builder->join('item i', 'i.id = o.product_id');
-        $builder->groupBY('product_id');
+        $builder->join('brand b', 'b.id=i.brand');
+        $builder->join('category c', 'c.id=i.category');
+        $builder->groupBY('o.product_id');
         $builder->orderBy('SUM(o.quantity)', 'DESC');
         $builder->where('o.is_delete', '0');
         $builder->limit(8);
@@ -277,10 +294,12 @@ class HomeModel extends Model
     public function featured_data()
     {
         $db = $this->db;
-        $builder = $db->table('item');
-        $builder->select('*');
-        $builder->orderBy('id', 'DESC');
-        $builder->where(array('is_featured' => '1', 'is_delete' => '0'));
+        $builder = $db->table('item i');
+        $builder->select('i.*,b.brand as brand_name,c.category as category_name');
+        $builder->join('brand b', 'b.id=i.brand');
+        $builder->join('category c', 'c.id=i.category');
+        $builder->orderBy('i.id', 'DESC');
+        $builder->where(array('i.is_featured' => '1', 'i.is_delete' => '0'));
         $builder->limit(8);
         $query = $builder->get();
         $feature = $query->getResultArray();
@@ -933,6 +952,8 @@ class HomeModel extends Model
                     $value = ($post['total'] * $result['coupon_value']) / 100;
                     $data = $post['total'] - $value;
                 }
+                $msg = 'Apply coupon Success';
+
             } else {
                 $msg = 'Grand total must be ₹' . $result['cart_min_value'];
             }

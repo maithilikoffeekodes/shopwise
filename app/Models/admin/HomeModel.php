@@ -172,7 +172,7 @@ class HomeModel extends Model
         }
         return $msg;
     }
-    public function insert_edit_coupon($post)
+    public function insert_edit_coupon($post,$file)
     {
         $db = $this->db;
         $builder = $db->table('coupon');
@@ -186,6 +186,18 @@ class HomeModel extends Model
             'coupon_type' => $post['coupon_type'],
             'cart_min_value' => $post['min_price'],
         );
+        if (isset($file)) {
+            //  print_r($file);exit;
+            if ($file->isValid() && !$file->hasMoved()) {
+                $originalPath = '/coupon/' . date('Ymd') . '/';
+                if (!file_exists(getcwd() . $originalPath)) {
+                    mkdir(getcwd() . $originalPath, 0777, true);
+                }
+                $newName = $file->getRandomName();
+                $file->move(getcwd() . $originalPath, $newName);
+                $pdata['image'] = $originalPath . $newName;
+            }
+        }
         if (!empty($result)) {
             $pdata['updated_at'] = date('Y-m-d H:i:s');
             $pdata['updated_by'] = session('id');
@@ -199,11 +211,15 @@ class HomeModel extends Model
         } else {
             $pdata['created_at'] = date('Y-m-d H:i:s');
             $pdata['created_by'] = session('id');
-            $res = $builder->insert($pdata);
-            if ($res) {
-                $msg = array('st' => 'success', 'msg' => 'Insert successfully');
+            if (!empty($_FILES['image']['name'])) {
+                $res = $builder->insert($pdata);
+                if ($res) {
+                    $msg = array('st' => 'success', 'msg' => 'Insert successfully');
+                } else {
+                    $msg = array('st' => 'failed');
+                }
             } else {
-                $msg = array('st' => 'failed');
+                $msg = array('st' => 'error', 'msg' => 'Please select a image');
             }
         }
         return $msg;
@@ -436,10 +452,15 @@ class HomeModel extends Model
     {
         $db = $this->db;
         $builder = $db->table('coupon');
-        $builder->select('id,coupon_code,coupon_value,coupon_type,cart_min_value,created_at');
+        $builder->select('id,coupon_code,image,coupon_value,coupon_type,cart_min_value,created_at');
         $builder->where('is_delete', '0');
         $data_table = DataTable::of($builder);
         $data_table->setSearchableColumns(['id']);
+        $data_table->edit('image', function ($row) {
+            $img_tag = '';
+            $img_tag .= '<img src=" ' . $row->image . ' " width="400px" height="200px">';
+            return $img_tag;
+        });
         $data_table->add('action', function ($row) {
             $btnedit = '<a data-toggle="modal" data-target="#fm_model" href="' . url('admin/Home/createcoupon/') . $row->id . '" data-title="Edit Coupons : ' . $row->coupon_code . '"  class="btn btn-link pd-10"><i class="far fa-edit"></i></a> ';
 

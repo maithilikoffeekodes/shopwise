@@ -99,7 +99,7 @@
                             </table>
                         </div>
                         <div class="col-lg-6 mt-3" style="float:left;">
-                            <!-- <a href="<?= url('admin/Home/invoice/') ?>" download target="_blank" class=" btn btn-danger">Invoice Pdf</a> -->
+                        <a href="<?= url('Home/invoice/' . @$order['order_id']) ?>" download target="_blank" class=" btn btn-danger">Invoice Pdf</a>
                         </div>
                     </div>
                 </div>

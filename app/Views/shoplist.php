@@ -255,6 +255,7 @@
         var brand_id = $('#brand option:selected').val();
         var category_id = $('#category option:selected').val();
         var cat = "<?= isset($_GET['category']) ? $_GET['category'] : ''; ?>";
+        var brand = "<?= isset($_GET['brand']) ? $_GET['brand'] : ''; ?>";
         var price = $("#price option:selected").val();
         var search = "<?= isset($_GET['search']) ? $_GET['search'] : ''; ?>";
         // var search = $('#searchdata').val();
@@ -269,7 +270,7 @@
                 category_id: category_id,
                 price: price,
                 cat: cat,
-                // brand: brand,
+                brand: brand,
                 // search1:search1,
                 search: search,
                 min_price: min_price,
